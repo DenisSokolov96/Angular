@@ -1,0 +1,121 @@
+button{
+  background-color: #afabab;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 80px;
+}
+button:hover,
+button:focus {
+  background: #8f61ba;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+
+/*table {
+  font-size: 30px;
+  font-weight: bold;
+  color: #192807;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}*/
+table {
+  font-size: 30px;
+}
+table{
+  text-align: center;
+}
+table a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+input{
+  color: #444444;
+  border-radius: 80px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.fon1{
+  position: absolute; /* Абсолютное позиционирование */
+  top: 200px;
+  left: 500px;
+  color: #f5f5f5;
+  background-color: rgba(40, 40, 40, 0.7);
+  border-radius: 50px;
+  padding: 20px;
+  text-align: center;
+}
+
+.inputForm{
+  position: absolute;
+  top: 200px;
+  left: 50px;
+
+  color: #f5f5f5;
+  background-color: rgba(40, 40, 40, 0.7);
+  border-radius: 50px;
+  padding: 20px;
+}
+
+#inputForm {
+  position:relative;
+}
+#inputForm {
+  height:450px;
+  overflow:auto;
+  margin-top:20px;
+}
+#inputForm {
+  width: 100%;
+}
+
+
+.inputFormNumber{
+  position: absolute;
+  top: 600px;
+  left: 50px;
+
+  color: #f5f5f5;
+  background-color: rgba(40, 40, 40, 0.7);
+  border-radius: 50px;
+  padding: 20px;
+}
+
+#inputFormNumber {
+  position:relative;
+}
+#inputFormNumber {
+  height:450px;
+  overflow:auto;
+  margin-top:20px;
+}
+#inputFormNumber {
+  width: 100%;
+}
+/*добавление машины*/
+.fon2{
+  position: absolute; /* Абсолютное позиционирование */
+  top: 600px;
+  left: 500px;
+  color: #f5f5f5;
+  background-color: rgba(40, 40, 40, 0.7);
+  border-radius: 50px;
+  padding: 20px;
+  text-align: center;
+}

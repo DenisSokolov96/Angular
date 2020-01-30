@@ -1,0 +1,91 @@
+<p class="header" style="background-color: brown"> {{title}} </p>
+<!-- // ---------------->
+<!-- <div>
+  <img src="../assets/images/bus.jpg">
+</div> -->
+<!--  ------------------>
+<ul>
+  <li>
+    <a routerLink="/home" >Сделки</a>
+  </li>
+
+<!--  <li>-->
+<!--    <a routerLink="/routes">Расписание</a>-->
+<!--  </li>-->
+
+  <li *ngIf="loggedIn==true">
+    <a routerLink="/cabinet">Личный кабинет</a>
+  </li>
+
+  <li *ngIf="isAdmin==true">
+    <a routerLink="/admin">Панель администратора</a>
+  </li>
+
+<!--  <li class="active" *ngIf="!loggedIn" style="float:right">-->
+<!--    <a routerLink="/login">Войти</a>-->
+<!--  </li>-->
+
+  <li class="active" *ngIf="loggedIn==true" style="float:right">
+    <a (click)="logOut()">Выйти</a>
+  </li>
+
+</ul>
+
+
+<!-- <body>
+  <nav class="navabar navabar-default">
+    <div class="container-fluid">
+      <div class="navabar-header">
+
+
+        <p class="header"> {{title}} </p>
+
+        <table class="navTable">
+          <tr>
+            <td class="link">
+              <nav>
+                <a routerLink="/home">Главная</a>
+              </nav>
+            </td>
+
+            <td class="link">
+              <nav>
+                <a routerLink="/routes">Расписание</a>
+              </nav>
+            </td>
+
+            <td class="link" *ngIf="loggedIn==true">
+              <nav>
+                <a routerLink="/root">Личный кабинет</a>
+              </nav>
+            </td>
+
+            <td class="link" width=100% *ngIf="!loggedIn" align="right">
+              <nav>
+                <div class="row">
+                  <a routerLink="/login">Войти</a>
+                </div>
+              </nav>
+            </td>
+
+            <td class="link" *ngIf="loggedIn" width=100% align="right">
+              <a (click)="logOut()">Выйти</a>
+            </td>
+
+          </tr>
+        </table> -->
+
+        <table width=100% height=80% class="routerTable">
+          <tr>
+            <td width=15%></td>
+            <td valign="top" width=70% align=center>
+              <router-outlet></router-outlet>
+            </td>
+            <td width=15%></td>
+          </tr>
+        </table>
+
+      <!-- </div>
+    </div>
+  </nav>
+</body> -->

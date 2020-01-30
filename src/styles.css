@@ -1,0 +1,35 @@
+/* Add application styles & imports to this file! */
+html, body {
+    height: 100%;
+}
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+html{
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-image: url("http://st.gde-fon.com/wallpapers_original/510550_gory_doroga_mashina_pejzazh_1920x1080_www.Gde-Fon.com.jpg");
+    font-family: "Segoe UI";
+    user-select: none;
+    color:#f5f5f5;
+}
+
+input{
+    color:black;
+    background-color: #f5f5f5;
+    font-size: 20;
+}
+
+
+  button {
+    background-color: #f5f5f5;
+    color: black;
+    border: 2px solid #555555;
+    font-size: 15px;
+    margin:10px;
+  }
+
+  button:hover {
+    background-color: #555555;
+    color: #f5f5f5;
+  }
