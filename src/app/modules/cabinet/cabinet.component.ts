@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Deal} from '../beans/deal';
-import {Role} from '../beans/role';
+import {Deal} from '../../beans/deal';
+import {Role} from '../../beans/role';
 import {NgModel} from '@angular/forms';
-import {RestService} from '../services/rest.service';
-import {PersonData} from '../beans/personData';
-import {Auto} from '../beans/auto';
+import {RestService} from '../../services/rest.service';
+import {PersonData} from '../../beans/personData';
+import {Auto} from '../../beans/auto';
 
 
 @Component({

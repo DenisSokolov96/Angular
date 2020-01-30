@@ -39,11 +39,9 @@ export class RestService {
 
     // tslint:disable-next-line:max-line-length
    const headers = new HttpHeaders({  'Content-Type': 'application/json', Accept: 'application/json', Authorization: 'Basic ' + btoa(username + ':' + password ) });
-  /* headers.append('Content-Type', 'application/json');
-   headers.append('Accept', 'application/json');*/
    // @ts-ignore
    return this.http
-      .get<any>(`http://localhost:8080/test/clientrole`,   { headers })
+      .get<any>(`http://localhost:8080/auth/user`,   { headers })
       .pipe( map((user) => {
           // login successful if there's a user in the response
         if (user) {
@@ -53,6 +51,7 @@ export class RestService {
             localStorage.setItem('currentUser', JSON.stringify(user));
             window.alert('if');
         }
+        window.alert('RestService');
 
         return user;
         },
@@ -60,35 +59,7 @@ export class RestService {
           window.alert('rest service' + error);
 
         }
-        ));
-
-    /*const headers = new HttpHeaders({   Authorization: 'Basic ' + btoa(username + ':' + password) });
-    return this.http.get<any>('http://localhost:8080/test/allrole', { headers }).pipe(
-      map(
-        userData => {
-          sessionStorage.setItem('username', username);
-          const authString = 'Basic ' + btoa(username + ':' + password);
-          sessionStorage.setItem('basicauth', authString);
-          window.alert('После ' + username + ':' + password);
-          return userData;
-        }
-      )
-
-    );*/
-    /*window.alert('До ' + username + ':' + password);
-    return this.http.post<any>(`http://localhost:8080/test/allrole`, { username , password})
-      .pipe(map(user => {
-        // login successful if there's a user in the response
-        if (user) {
-          // store user details and basic auth credentials in local storage
-          // to keep user logged in between page refreshes
-          user.authdata = window.btoa(username + ':' + password);
-          localStorage.setItem('login', JSON.stringify(user.authdata.username));
-          localStorage.setItem('password', JSON.stringify(user.authdata.username));
-          window.alert('После ' + username + ':' + password);
-        }
-        return user;
-      }));*/
+      ));
   }
 
   /**

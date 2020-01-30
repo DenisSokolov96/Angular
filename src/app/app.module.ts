@@ -16,9 +16,8 @@ import {AuthGuardService} from './services/auth-guard.service';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TableComponent} from './table/table.component';
-import {AdminpanelComponent} from './adminpanel/adminpanel.component';
-import {CabinetComponent} from './cabinet/cabinet.component';
+import {AdminpanelComponent} from './modules/adminpanel/adminpanel.component';
+import {CabinetComponent} from './modules/cabinet/cabinet.component';
 import {BasicAuthInterceptor} from './services/basic-auth.interceptor';
 import {ErrorInterceptor} from './services/error.interceptor';
 
@@ -56,7 +55,6 @@ const appRoutes: Routes = [
     AppComponent,
     MainComponent,
     LoginComponent,
-    TableComponent,
     AdminpanelComponent,
     CabinetComponent
   ],

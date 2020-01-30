@@ -27,13 +27,13 @@ export class LoginComponent implements OnInit {
 
   logIn(l: string, p: string) {
 
-    l = 'NewUser2';
-    p = 'NewUser2Pass';
+    l = 'Oleg';
+    p = 'pass';
     const params = {
       login: l,
       password: p
     };
-    this.restService.call(l, p).pipe(first())
+    this.restService.call(l, p)// .pipe(first())
       .subscribe((res: any) => {
          console.log(res);
         // tslint:disable-next-line:triple-equals
