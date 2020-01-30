@@ -35,13 +35,12 @@ export class RestService {
         return this.mapResponse(methodName, response);
       }));
   }*/
-  public call(username: string, password: string) {
-
+  public call(username: string, password: string, path: string) {
     // tslint:disable-next-line:max-line-length
    const headers = new HttpHeaders({  'Content-Type': 'application/json', Accept: 'application/json', Authorization: 'Basic ' + btoa(username + ':' + password ) });
    // @ts-ignore
    return this.http
-      .get<any>(`http://localhost:8080/auth/user`,   { headers })
+      .get<any>(`http://localhost:8080/test/allrole` ,   { headers })
       .pipe( map((user) => {
           // login successful if there's a user in the response
         if (user) {
@@ -49,10 +48,7 @@ export class RestService {
             // to keep user logged in between page refreshes
             user.authdata = window.btoa(username + ':' + password);
             localStorage.setItem('currentUser', JSON.stringify(user));
-            window.alert('if');
         }
-        window.alert('RestService');
-
         return user;
         },
         error => {

@@ -92,7 +92,7 @@ export class CabinetComponent implements OnInit {
       surname
     };
     console.log(params);
-    this.restService.call('', '')// ('persondata/change', params, 'POST')
+    this.restService.call('', '', 'persondata/change')// ('persondata/change', params, 'POST')
       .subscribe((res: any) => {
           // console.log(res);
         //  this.deals = [];
@@ -122,7 +122,7 @@ export class CabinetComponent implements OnInit {
       number
     };
     console.log(params);
-    this.restService.call(login, password)// ('persondata/change', params, 'POST')
+    this.restService.call(login, password, 'persondata/change')// ('persondata/change', params, 'POST')
       .subscribe((res: any) => {
           // console.log(res);
           //  this.deals = [];
@@ -143,7 +143,7 @@ export class CabinetComponent implements OnInit {
       password
     };
     console.log('Load data ' + params);
-    this.restService.call(login, password)// ('persondata/show', params, 'POST')
+    this.restService.call(login, password, 'persondata/show')// ('persondata/show', params, 'POST')
       .subscribe((res: any) => {
            console.log(res);
            // this.outputPersonData = null;
@@ -156,7 +156,7 @@ export class CabinetComponent implements OnInit {
 
   loadRoleData() {
 
-    this.restService.call('', '')// ('persondata/roles', null, 'GET')
+    this.restService.call('', '', 'persondata/roles')// ('persondata/roles', null, 'GET')
       .subscribe((res: any) => {
           // console.log(res);
           this.roleList = [];
@@ -168,7 +168,7 @@ export class CabinetComponent implements OnInit {
 
   loadAutoData() {
 
-    this.restService.call('', '')// ('', null, 'GET')
+    this.restService.call('', '', '')// ('', null, 'GET')
       .subscribe((res: any) => {
           // console.log(res);
           this.autoList = [];

@@ -70,7 +70,7 @@ export class MainComponent implements OnInit {
       box_id
     };
     console.log(params);
-    this.restService.call('', '')//('deal/create', params, 'POST')
+    this.restService.call('', '', 'deal/create')// ('deal/create', params, 'POST')
       .subscribe((res: any) => {
           // console.log(res);
           // this.deals = res.dealList;
@@ -84,7 +84,7 @@ export class MainComponent implements OnInit {
 
   loadBoxData() {
 
-    this.restService.call('', '')// ('box/free', null, 'GET')
+    this.restService.call('', '', 'box/free')// ('box/free', null, 'GET')
       .subscribe((res: any) => {
           // console.log(res);
           this.freeBoxList = [];
@@ -104,7 +104,7 @@ export class MainComponent implements OnInit {
       password
     };
     console.log(params);
-    this.restService.call('', '')// ('deal/show', params, 'POST')
+    this.restService.call('', '', 'deal/show')// ('deal/show', params, 'POST')
       .subscribe((res: any) => {
           // console.log(res);
           this.deals = [];

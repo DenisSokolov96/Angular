@@ -14,6 +14,9 @@ import {first, take} from 'rxjs/operators';
 export class LoginComponent implements OnInit {
 
 
+  private mode: boolean;
+
+
   constructor(
     private headerService: HeaderService,
     private router: Router,
@@ -22,6 +25,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.mode = true;
+  }
+  toggleVisibility(e) {
+    this.mode = e.target.checked;
   }
 
 
@@ -29,34 +36,36 @@ export class LoginComponent implements OnInit {
 
     l = 'Oleg';
     p = 'pass';
-    const params = {
-      login: l,
-      password: p
-    };
-    this.restService.call(l, p)// .pipe(first())
-      .subscribe((res: any) => {
-         console.log(res);
-        // tslint:disable-next-line:triple-equals
-         if (res.result == true) {
-         localStorage.setItem('login', params.login);
-         localStorage.setItem('role', res.role);
-         localStorage.setItem('password', params.password);
-         window.alert('then');
-         this.router.navigate(['/home']);
-         } else {
-          window.alert('incorrect login or password');
-         }
-         return res;
-      },
-        error => {
-          window.alert('login component error : \n' + error );
-        }
+
+    if (this.mode) {
+      console.log('/auth/user');
+      this.restService.call(l, p, '/auth/user')
+        .subscribe((res: any) => {
+            // tslint:disable-next-line:triple-equals
+            if (res.result == true) {
+              this.router.navigate(['/home']);
+            }
+            return res;
+          },
+          error => {
+            window.alert('Ошибка аутентификации: \n' + error );
+          }
         );
+    } else {
+      console.log('/registration');
+      this.restService.call(l, p, '/registration')
+        .subscribe((res: any) => {
+            // tslint:disable-next-line:triple-equals
+            this.mode = true;
+            return res;
+          },
+          error => {
+            window.alert('Ошибка регистрации: \n' + error );
+          }
+        );
+    }
   }
 
 
 }
-
-//////////////////////////////////////////
-
 

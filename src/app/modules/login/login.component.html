@@ -5,8 +5,11 @@
             <table  class="fon1">
                 <tr>
 
-                    <td>
+                    <td *ngIf="mode==true">
                         Вход на сайт
+                    </td>
+                    <td *ngIf="mode==false">
+                      Регистрация на сайт
                     </td>
 
                 </tr>
@@ -27,9 +30,27 @@
 
                     <td>
                         <button (click)="logIn(loginInput.value,passwordInput.value)">
+                          <a *ngIf="mode==false">
+                            Зарегистрироваться
+                          </a>
+                          <a *ngIf="mode==true">
                             Войти
+                          </a>
                         </button>
                     </td>
+                </tr>
+                <tr>
+                  <td>
+                      <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked [(ngModel)]="mode"  data-md-icheck (change)="toggleVisibility($event)">
+                          <label class="onoffswitch-label" for="myonoffswitch">
+                            <span class="onoffswitch-inner"  (contextmenu)="mode = true "></span>
+                            <span class="onoffswitch-switch" (contextmenu)="mode = false "></span>
+                          </label>
+
+                      </div>
+
+                  </td>
 
                 </tr>
             </table>
