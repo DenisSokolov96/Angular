@@ -27,40 +27,56 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.mode = true;
   }
+
   toggleVisibility(e) {
     this.mode = e.target.checked;
   }
 
 
-  logIn(l: string, p: string) {
+  logIn(inputLogin: string, inputPassword: string) {
 
-    l = 'Oleg';
-    p = 'pass';
+    const authData = btoa(inputLogin + ':' + inputPassword);
 
+    localStorage.setItem('authData', authData);
+
+    console.log('MODE - ' + this.mode);
     if (this.mode) {
-      console.log('/auth/user');
-      this.restService.call(l, p, '/auth/user')
+      console.log('auth/user');
+      this.restService.call('auth/user', null, 'GET')
         .subscribe((res: any) => {
-            // tslint:disable-next-line:triple-equals
-            if (res.result == true) {
+
+            if (res.result === true) {
+              console.log('SUCCESS');
+
+              localStorage.setItem('login', inputLogin);
+              localStorage.setItem('role', res.role);
+              console.log(res.role);
               this.router.navigate(['/home']);
             }
             return res;
           },
           error => {
-            window.alert('Ошибка аутентификации: \n' + error );
+            localStorage.clear();
+            window.alert('Ошибка аутентификации: \n' + error);
           }
         );
     } else {
-      console.log('/registration');
-      this.restService.call(l, p, '/registration')
+
+      console.log('registration');
+
+      const params = {
+        login: inputLogin,
+        password: inputPassword
+      };
+
+      this.restService.call('registration', params, 'POST')
         .subscribe((res: any) => {
-            // tslint:disable-next-line:triple-equals
+
             this.mode = true;
             return res;
           },
           error => {
-            window.alert('Ошибка регистрации: \n' + error );
+            window.alert('Ошибка регистрации: \n' + error);
           }
         );
     }

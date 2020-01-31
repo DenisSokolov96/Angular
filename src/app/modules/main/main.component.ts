@@ -26,12 +26,12 @@ export class MainComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.loadBoxData();
-    this.loadDealsData();
+    //this.loadBoxData();
+    //this.loadDealsData();
 
     const login = localStorage.getItem('login');
-    console.log('login');
-    // tslint:disable-next-line:triple-equals
+    console.log('login - ' + login);
+
     if (login != null && login != 'undefined') {
       this.headerService.setTitle('Добро пожаловать, ' + localStorage.getItem('login') + '!');
     } else {

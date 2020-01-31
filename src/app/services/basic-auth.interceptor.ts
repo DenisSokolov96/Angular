@@ -6,15 +6,26 @@ import { Observable } from 'rxjs';
 export class BasicAuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add authorization header with basic auth credentials if available
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && currentUser.authdata) {
+    const authData = localStorage.getItem('authData');
+    console.log('INTERCEPTOR_START auth data - ' + authData);
+    if (authData != null ) {
+
+      const urlSplit = request.urlWithParams.split('/');
+
+      console.log('INTERCEPTOR_METHOD - ' + request.method + ' ' + urlSplit + ' ' + urlSplit[urlSplit.length-1]);
+      if (urlSplit[urlSplit.length - 1] === 'registration') {
+        console.log('CALL_REG');
+        return next.handle(request);
+      }
+
       request = request.clone({
         setHeaders: {
-          Authorization: `Basic ${currentUser.authdata}`
+          Authorization: `Basic ${authData}`
         }
       });
     }
 
+    console.log('INTERCEPTOR_END');
     return next.handle(request);
   }
 }

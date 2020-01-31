@@ -14,7 +14,7 @@ export class RestService {
     'Content-Type': 'application/json; charset=UTF-8'});
   // private static DEFAULT_PATH = '/rest/';
 
-  constructor(private http: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   /**
@@ -22,41 +22,41 @@ export class RestService {
    * @param methodName - имя метода
    * @param params - параметры
    */
-/*  public call(methodName: string, params: any, reqType: string) {
+ public call(methodName: string, params: any, reqType: string) {
     const url = 'http://localhost:8080/' + methodName;
     console.log('calling ' + methodName + ' with params: ', params);
     const options = {
       headers: this.jsonHeaders,
       body: params,
-      withCredentials: true
+      // withCredentials: true
     };
     return this.httpClient.request(reqType, url, options)
       .pipe(map((response) => {
         return this.mapResponse(methodName, response);
       }));
-  }*/
-  public call(username: string, password: string, path: string) {
-    // tslint:disable-next-line:max-line-length
-   const headers = new HttpHeaders({  'Content-Type': 'application/json', Accept: 'application/json', Authorization: 'Basic ' + btoa(username + ':' + password ) });
-   // @ts-ignore
-   return this.http
-      .get<any>(`http://localhost:8080/test/allrole` ,   { headers })
-      .pipe( map((user) => {
-          // login successful if there's a user in the response
-        if (user) {
-            // store user details and basic auth credentials in local storage
-            // to keep user logged in between page refreshes
-            user.authdata = window.btoa(username + ':' + password);
-            localStorage.setItem('currentUser', JSON.stringify(user));
-        }
-        return user;
-        },
-        error => {
-          window.alert('rest service' + error);
-
-        }
-      ));
   }
+  // public call(username: string, password: string, path: string) {
+  //   // tslint:disable-next-line:max-line-length
+  //  const headers = new HttpHeaders({  'Content-Type': 'application/json', Accept: 'application/json', Authorization: 'Basic ' + btoa(username + ':' + password ) });
+  //  // @ts-ignore
+  //  return this.http
+  //     .get<any>(`http://localhost:8080/test/allrole` ,   { headers })
+  //     .pipe( map((user) => {
+  //         // login successful if there's a user in the response
+  //       if (user) {
+  //           // store user details and basic auth credentials in local storage
+  //           // to keep user logged in between page refreshes
+  //           user.authdata = window.btoa(username + ':' + password);
+  //           localStorage.setItem('currentUser', JSON.stringify(user));
+  //       }
+  //       return user;
+  //       },
+  //       error => {
+  //         window.alert('rest service' + error);
+  //
+  //       }
+  //     ));
+  // }
 
   /**
    * Мапинг результата вызова
