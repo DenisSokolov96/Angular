@@ -103,11 +103,12 @@ table.blueTable tfoot .links a{
   border-radius: 5px;
 }
 Strong {
-  color: red; /* Цвет символа */
+  color: #555555; /* Цвет символа */
   /*font-size: 200%; !* Размер шрифта *!*/
 }
 Small {
-  color: rgb(151, 4, 39); /* Цвет текста */
+  color: rgb(245, 245, 245); /* Цвет текста */
+  font-size: 150%;
 }
 
 #table-wrapper {
@@ -122,15 +123,71 @@ Small {
   width: 100%;
 }
 
-button {
-  background-color: #455eaf; /* Green */
+button{
+  background-color: #afabab;
   border: none;
-  color: #f6f4ff;
-  padding: 15px 32px;
+  color: white;
+  padding: 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 8px;
+  margin: 4px 2px;
+  border-radius: 80px;
+}
+button:hover,
+button:focus {
+  background: #8f61ba;
 }
 
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+* {
+  outline: 0 !important;
+}
+
+td{
+  padding: 8px;
+}
+
+.inputForm{
+  position: center;
+  top: 70%;
+  color: #f5f5f5;
+  background-color: rgba(40, 40, 40, 0.7);
+  border-radius: 50px;
+  padding: 20px;
+}
+
+#inputForm {
+  position:relative;
+}
+#inputForm {
+  height:450px;
+  overflow:auto;
+  margin-top:20px;
+}
+#inputForm {
+  width: 100%;
+}
+
+.box select {
+  background-color: #fffbfb;
+  color: #000000;
+  padding: 12px;
+  width: 200px;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 5px 25px rgba(245, 245, 245, 0.2);
+  -webkit-appearance: button;
+  appearance: auto;
+  outline: none;
+  border-radius: 80px
+}
+
+table{
+  text-align: center;
+}

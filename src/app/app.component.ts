@@ -75,7 +75,7 @@ export class AppComponent {
       if (!this.loggedIn) {
         this.router.navigate(['login']);
       } else {
-        this.router.navigate(['home']);
+        this.router.navigate(['cabinet']);
       }
 
     });

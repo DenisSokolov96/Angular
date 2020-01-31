@@ -21,25 +21,23 @@ export class MainComponent implements OnInit {
   constructor(
     private headerService: HeaderService,
     private restService: RestService,
-
-
     ) { }
 
   ngOnInit() {
-    //this.loadBoxData();
-    //this.loadDealsData();
+    this.loadDealsData();
 
     const login = localStorage.getItem('login');
     console.log('login - ' + login);
 
-    if (login != null && login != 'undefined') {
+    // tslint:disable-next-line:triple-equals
+   /* if (login != null && login != 'undefined') {
       this.headerService.setTitle('Добро пожаловать, ' + localStorage.getItem('login') + '!');
     } else {
      this.headerService.setTitle('Добро пожаловать, гость!');
-    }
+    }*/
   }
 
-  routeChanged(value: string) {
+  /*routeChanged(value: string) {
     this.value = value;
 
 
@@ -50,12 +48,11 @@ export class MainComponent implements OnInit {
     // this.addNewDeal(id);
 
     this.freeBoxList = [];
-    this.loadBoxData();
     // this.loadDealsData();
 
 
     console.log(id);
-  }
+  }*/
 
   // tslint:disable-next-line:variable-name
   addNewDeal(box_id: number ) {
@@ -70,28 +67,15 @@ export class MainComponent implements OnInit {
       box_id
     };
     console.log(params);
-    this.restService.call('', '', 'deal/create')// ('deal/create', params, 'POST')
+    this.restService.call('deal/create', null, 'POST')
       .subscribe((res: any) => {
           // console.log(res);
           // this.deals = res.dealList;
           console.log(res.deal);
           this.loadDealsData();
-          this.loadBoxData();
         }
       );
 
-  }
-
-  loadBoxData() {
-
-    this.restService.call('', '', 'box/free')// ('box/free', null, 'GET')
-      .subscribe((res: any) => {
-          // console.log(res);
-          this.freeBoxList = [];
-          this.freeBoxList = res.boxList;
-          console.log(this.freeBoxList);
-        }
-      );
   }
 
   loadDealsData() {
@@ -104,7 +88,7 @@ export class MainComponent implements OnInit {
       password
     };
     console.log(params);
-    this.restService.call('', '', 'deal/show')// ('deal/show', params, 'POST')
+    this.restService.call('deal/show', params, 'POST')
       .subscribe((res: any) => {
           // console.log(res);
           this.deals = [];

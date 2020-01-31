@@ -12,11 +12,15 @@ export class BasicAuthInterceptor implements HttpInterceptor {
 
       const urlSplit = request.urlWithParams.split('/');
 
-      console.log('INTERCEPTOR_METHOD - ' + request.method + ' ' + urlSplit + ' ' + urlSplit[urlSplit.length-1]);
+      console.log('INTERCEPTOR_METHOD - ' + request.method + ' ' + urlSplit + ' ' + urlSplit[urlSplit.length - 1]);
       if (urlSplit[urlSplit.length - 1] === 'registration') {
         console.log('CALL_REG');
         return next.handle(request);
       }
+      /*if ( (urlSplit[urlSplit.length - 1] === 'all') && (urlSplit[urlSplit.length - 2] === 'box') ) {
+        console.log('CALL_box_all');
+        return next.handle(request);
+      }*/
 
       request = request.clone({
         setHeaders: {

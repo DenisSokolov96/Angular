@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
 
   logIn(inputLogin: string, inputPassword: string) {
 
+    inputLogin = 'NewUser2';
+    inputPassword = 'pass';
     const authData = btoa(inputLogin + ':' + inputPassword);
 
     localStorage.setItem('authData', authData);
@@ -51,7 +53,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('login', inputLogin);
               localStorage.setItem('role', res.role);
               console.log(res.role);
-              this.router.navigate(['/home']);
+              this.router.navigate(['/cabinet']);
             }
             return res;
           },

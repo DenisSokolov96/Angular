@@ -73,9 +73,8 @@ input{
 }
 .onoffswitch-inner:before {
   content: "Регистрация";
-  /*padding-left: 10px;*/
   padding-right: 40px;
-  background-color: #9c7ad9; color: #FFFFFF;
+  background-color: #EEEEEE; color: #999999;
 }
 .onoffswitch-inner:after {
   content: "Авторизация";

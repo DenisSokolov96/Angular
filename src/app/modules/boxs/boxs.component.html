@@ -1,0 +1,81 @@
+
+
+<table  class="fon1">
+
+
+  <thead>
+  <tr>
+
+    <td>
+      <small>Местоположение </small>
+    </td>
+
+    <td>
+      <small> Статус</small>
+    </td>
+  </tr>
+  </thead>
+
+  <tr *ngFor="let elem of data ">
+
+    <td>{{elem.col}} {{elem.row}}</td>
+    <td>{{elem.state}}</td>
+  </tr>
+</table>
+
+
+<table class="inputForm">
+
+
+  <thead>
+  <tr>
+
+    <td>
+      <small>Выбрать</small>
+    </td>
+
+  </tr>
+  </thead>
+
+  <tr>
+    <td>
+    <div class="box">
+      <select class="form-control" name="company"
+              [(ngModel)]="selected" #dataInput="ngModel">
+        <option  *ngFor="let elem of mass" [value]="elem.id">
+          {{elem.name}}
+        </option>
+      </select>
+    </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+  <div  class="form-group">
+    <button class="btn btn-default" (click)="selectData(selected, col, row)">
+      Выполнить
+    </button>
+  </div>
+    </td>
+    </tr>
+
+  <tr>
+    <td>
+      <div class="form-group" *ngIf="role=='admin'">
+        <input class="form-control" name="title" placeholder="ряд"
+               [(ngModel)]="col" #colInput="ngModel" />
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="form-group" *ngIf="role=='admin'">
+        <input  class="form-control" name="price" placeholder="место"
+                [(ngModel)]="row" #rowInput="ngModel" />
+      </div>
+    </td>
+  </tr>
+
+</table>

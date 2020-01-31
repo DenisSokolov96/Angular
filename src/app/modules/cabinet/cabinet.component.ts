@@ -5,6 +5,7 @@ import {NgModel} from '@angular/forms';
 import {RestService} from '../../services/rest.service';
 import {PersonData} from '../../beans/personData';
 import {Auto} from '../../beans/auto';
+import {HeaderService} from '../../services/header.service';
 
 
 @Component({
@@ -43,6 +44,7 @@ export class CabinetComponent implements OnInit {
 
 
   constructor(
+    private headerService: HeaderService,
     private restService: RestService,
 
   ) {
@@ -54,20 +56,27 @@ export class CabinetComponent implements OnInit {
   ngOnInit() {
 
 
-    console.log('INIT OF CABINET');
+/*    console.log('INIT OF CABINET');
     const login = localStorage.getItem('login');
     const role = localStorage.getItem('role');
     const password = localStorage.getItem('password');
 
     // tslint:disable-next-line:triple-equals
-    if (role == 'admin') {   this.isAdmin = true; }
+    if (role == 'admin') {   this.isAdmin = true; }*/
 
+    const login = localStorage.getItem('login');
+    console.log('login - ' + login);
 
-
-    console.log('LOAD DATA OF CABINET');
-    this.loadData(login, password);
-    this.loadRoleData();
-    this.loadAutoData();
+    // tslint:disable-next-line:triple-equals
+    if (login != null && login != 'undefined') {
+      this.headerService.setTitle('Добро пожаловать, ' + localStorage.getItem('login') + '!');
+    } else {
+      this.headerService.setTitle('Добро пожаловать, гость!');
+    }
+   // console.log('LOAD DATA OF CABINET');
+   // this.loadData(login, password);
+   // this.loadRoleData();
+   // this.loadAutoData();
 
   }
 
@@ -92,7 +101,7 @@ export class CabinetComponent implements OnInit {
       surname
     };
     console.log(params);
-    this.restService.call('', '', 'persondata/change')// ('persondata/change', params, 'POST')
+    this.restService.call('persondata/change',  params, 'POST')// ('persondata/change', params, 'POST')
       .subscribe((res: any) => {
           // console.log(res);
         //  this.deals = [];
