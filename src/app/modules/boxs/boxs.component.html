@@ -1,28 +1,55 @@
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+<!--<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">-->
+<!--<div class="container">-->
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+</script>
+<script>
+  $(document).ready(function(){
+    $('#myTable').dataTable();
+  });
+</script>
 
-<table  class="fon1">
+<div id="table-wrapper">
+  <div id="table-scroll">
+    <table  class="blueTable">
+      <thead>
+      <tr>
 
+        <td>
+          <small>ID Бокса </small>
+        </td>
 
-  <thead>
-  <tr>
+        <td>
+          <small>Местоположение </small>
+        </td>
 
-    <td>
-      <small>Местоположение </small>
-    </td>
+        <td>
+          <small> Статус</small>
+        </td>
+      </tr>
+      </thead>
 
-    <td>
-      <small> Статус</small>
-    </td>
-  </tr>
-  </thead>
+      <tr *ngFor="let elem of data ">
 
-  <tr *ngFor="let elem of data ">
+        <td>
+          <strong> {{elem.id}} </strong>
+        </td>
 
-    <td>{{elem.col}} {{elem.row}}</td>
-    <td>{{elem.state}}</td>
-  </tr>
-</table>
-
+        <td>
+          <strong> {{elem.col}}  {{elem.row}} </strong>
+        </td>
+        <td>
+          <strong *ngIf="elem.occupied"> пустой </strong>
+          <strong *ngIf="!elem.occupied"> занят </strong>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 <table class="inputForm">
 
@@ -63,7 +90,7 @@
   <tr>
     <td>
       <div class="form-group" *ngIf="role=='admin'">
-        <input class="form-control" name="title" placeholder="ряд"
+        <input class="form-control" name="x" placeholder="ряд"
                [(ngModel)]="col" #colInput="ngModel" />
       </div>
     </td>
@@ -72,7 +99,7 @@
   <tr>
     <td>
       <div class="form-group" *ngIf="role=='admin'">
-        <input  class="form-control" name="price" placeholder="место"
+        <input  class="form-control" name="y" placeholder="место"
                 [(ngModel)]="row" #rowInput="ngModel" />
       </div>
     </td>

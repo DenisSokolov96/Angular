@@ -17,11 +17,10 @@ export class BasicAuthInterceptor implements HttpInterceptor {
         console.log('CALL_REG');
         return next.handle(request);
       }
-      /*if ( (urlSplit[urlSplit.length - 1] === 'all') && (urlSplit[urlSplit.length - 2] === 'box') ) {
-        console.log('CALL_box_all');
+      if ( (urlSplit[urlSplit.length - 1] === 'free') && (urlSplit[urlSplit.length - 2] === 'show') ) {
+        console.log('CALL_box_show_free');
         return next.handle(request);
-      }*/
-
+      }
       request = request.clone({
         setHeaders: {
           Authorization: `Basic ${authData}`

@@ -15,41 +15,41 @@
 
 <div id="table-wrapper">
   <div id="table-scroll">
-<table class="blueTable">а
-  <thead>
-  <tr>
+      <table class="blueTable">а
+        <thead>
+        <tr>
 
-    <td>
-      <small>Номер сделки:  </small>
-    </td>
+          <td>
+            <small>Номер сделки:  </small>
+          </td>
 
-    <td>
-      <small>Статус сделки:  </small>
-    </td>
+          <td>
+            <small>Статус сделки:  </small>
+          </td>
 
-    <td>
-      <small>Номер бокса:  </small>
-    </td>
-  </tr>
-  </thead>
-  <tr *ngFor="let deal of deals ">
+          <td>
+            <small>Номер бокса:  </small>
+          </td>
+        </tr>
+        </thead>
+        <tr *ngFor="let deal of deals ">
 
-    <td>
+          <td>
 
-      <strong>{{deal.id}}</strong>
-    </td>
+            <strong>{{deal.id}}</strong>
+          </td>
 
-    <td>
+          <td>
 
-      <strong>{{deal.status}}</strong>
-    </td>
+            <strong>{{deal.status}}</strong>
+          </td>
 
-    <td>
+          <td>
 
-      <strong>{{deal.box.id}}</strong>
-    </td>
-  </tr>
-</table>
+            <strong>{{deal.box.id}}</strong>
+          </td>
+        </tr>
+      </table>
     </div>
     </div>
 <br>

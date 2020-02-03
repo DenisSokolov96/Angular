@@ -46,20 +46,19 @@ export class BoxsComponent implements OnInit {
           this.getAll();
           break;
         case '3' :
+          if ( (col > -1) && (row > -1) ) {
           this.getAdd(col, row);
+          }
           break;
       }
  }
 
   getAll() {
-    this.restService.call('box/all', null, 'GET')
+    this.restService.call('box/show/all', null, 'GET')
       .subscribe((res: any) => {
-
-          if (res.result === true) {
-            this.data = [];
-            this.data = res.data;
-            window.alert('Данные: ' + this.data);
-          }
+          this.data = [];
+          this.data = res;
+          console.log(this.data);
           return res;
         },
         error => {
@@ -69,14 +68,10 @@ export class BoxsComponent implements OnInit {
   }
 
   getFree() {
-    this.restService.call('box/free', null, 'GET')
+    this.restService.call('box/show/free', null, 'GET')
       .subscribe((res: any) => {
-
-          if (res.result === true) {
-            this.data = [];
-            this.data = res.data;
-            window.alert(this.data);
-          }
+          this.data = [];
+          this.data = res;
           return res;
         },
         error => {
@@ -92,11 +87,10 @@ export class BoxsComponent implements OnInit {
     };
     this.restService.call('box/add', params, 'POST')
       .subscribe((res: any) => {
-
-          if (res.result === true) {
-            this.data = [];
-            this.data = res.data;
-            window.alert(this.data);
+          if (res === true) {
+            window.alert('Бокс добавлен.');
+          } else {
+            window.alert('Ошибка добавления бокса.');
           }
           return res;
         },

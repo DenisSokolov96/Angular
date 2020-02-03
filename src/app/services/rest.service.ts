@@ -41,8 +41,6 @@ export class RestService {
    */
   private mapResponse(methodName, response) {
     console.log(methodName + ' call result: ', response);
-    // console.log(response.username)
-    // console.log(response.token)
     return response;
   }
 
