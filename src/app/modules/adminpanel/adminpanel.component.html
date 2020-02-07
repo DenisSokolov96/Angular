@@ -1,1 +1,114 @@
-<p>adminpanel works!</p>
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+<!--<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">-->
+<!--<div class="container">-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+</script>
+<script>
+  $(document).ready(function(){
+    $('#myTable').dataTable();
+  });
+</script>
+
+<div id="table-wrapper" *ngIf="(selected==1)||(dataAcc.length!=0)">
+  <div id="table-scroll">
+    <table  class="blueTable">
+      <thead>
+      <tr>
+
+        <td>
+          <small>ID Аккаунта </small>
+        </td>
+
+        <td>
+          <small>Логин</small>
+        </td>
+
+        <td>
+          <small>ID Роли </small>
+        </td>
+        <td>
+          <small> Роль </small>
+        </td>
+      </tr>
+      </thead>
+
+      <tr *ngFor="let elem of dataAcc ">
+
+        <td>
+          <strong> {{elem.id}} </strong>
+        </td>
+
+        <td>
+          <strong> {{elem.login}} </strong>
+        </td>
+
+        <td>
+          <strong> {{elem.role.id}} </strong>
+        </td>
+        <td>
+          <strong> {{elem.role.name}} </strong>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<table class="inputForm">
+
+
+  <thead>
+  <tr>
+
+    <td>
+      <small>Выбрать</small>
+    </td>
+
+  </tr>
+  </thead>
+
+  <tr>
+    <td>
+      <div class="box">
+        <select class="form-control" name="company"
+                [(ngModel)]="selected" #dataInput="ngModel">
+          <option  *ngFor="let elem of mass" [value]="elem.id">
+            {{elem.name}}
+          </option>
+        </select>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div  class="form-group">
+        <button class="btn btn-default" (click)="selectData(selected)">
+          Выполнить
+        </button>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="form-group" *ngIf="selected==2">
+        <input class="form-control" name="x" placeholder="логин"
+               [(ngModel)]="login" #colInput="ngModel" />
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="form-group" *ngIf="selected==2">
+        <input  class="form-control" name="y" placeholder="новая роль"
+                [(ngModel)]="newRole" #rowInput="ngModel" />
+      </div>
+    </td>
+  </tr>
+
+</table>

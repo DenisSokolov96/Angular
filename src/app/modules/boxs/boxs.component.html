@@ -13,7 +13,7 @@
   });
 </script>
 
-<div id="table-wrapper">
+<div id="table-wrapper" *ngIf="((selected>0)&&(selected<3))||(data.length!=0)">
   <div id="table-scroll">
     <table  class="blueTable">
       <thead>
@@ -27,6 +27,9 @@
           <small>Местоположение </small>
         </td>
 
+        <td>
+          <small> Коэф. стоимости</small>
+        </td>
         <td>
           <small> Статус</small>
         </td>
@@ -42,9 +45,14 @@
         <td>
           <strong> {{elem.col}}  {{elem.row}} </strong>
         </td>
+
         <td>
-          <strong *ngIf="elem.occupied"> пустой </strong>
-          <strong *ngIf="!elem.occupied"> занят </strong>
+          <strong> {{elem.coefficient}} </strong>
+        </td>
+
+        <td>
+          <strong *ngIf="!elem.occupied"> пустой </strong>
+          <strong *ngIf="elem.occupied"> занят </strong>
         </td>
       </tr>
     </table>
@@ -89,7 +97,7 @@
 
   <tr>
     <td>
-      <div class="form-group" *ngIf="role=='admin'">
+      <div class="form-group" *ngIf="(role=='admin')&&(selected==3)">
         <input class="form-control" name="x" placeholder="ряд"
                [(ngModel)]="col" #colInput="ngModel" />
       </div>
@@ -98,7 +106,7 @@
 
   <tr>
     <td>
-      <div class="form-group" *ngIf="role=='admin'">
+      <div class="form-group" *ngIf="(role=='admin')&&(selected==3)">
         <input  class="form-control" name="y" placeholder="место"
                 [(ngModel)]="row" #rowInput="ngModel" />
       </div>

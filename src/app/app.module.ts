@@ -21,6 +21,8 @@ import {CabinetComponent} from './modules/cabinet/cabinet.component';
 import {BasicAuthInterceptor} from './services/basic-auth.interceptor';
 import {ErrorInterceptor} from './services/error.interceptor';
 import { BoxsComponent } from './modules/boxs/boxs.component';
+import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -28,6 +30,7 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminpanelComponent},
   {path: 'cabinet', component: CabinetComponent},
   {path: 'boxs', component: BoxsComponent},
+  {path: 'app', component: AppComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ];
@@ -39,7 +42,11 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    HttpModule, BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    NgbModule
   ],
   exports: [
     RouterModule

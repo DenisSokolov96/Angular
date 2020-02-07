@@ -14,7 +14,7 @@ import {first, take} from 'rxjs/operators';
 export class LoginComponent implements OnInit {
 
 
-  private mode: boolean;
+  public mode: boolean;
 
 
   constructor(
@@ -37,6 +37,9 @@ export class LoginComponent implements OnInit {
 
     inputLogin = 'NewUser2';
     inputPassword = 'pass';
+    // inputLogin = 'Oleg';
+    // inputPassword = 'pass';
+
     const authData = btoa(inputLogin + ':' + inputPassword);
 
     localStorage.setItem('authData', authData);
@@ -53,7 +56,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('login', inputLogin);
               localStorage.setItem('role', res.role);
               console.log(res.role);
-              this.router.navigate(['/cabinet']);
+              this.router.navigate(['app']);
             }
             return res;
           },

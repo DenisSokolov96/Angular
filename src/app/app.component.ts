@@ -70,12 +70,17 @@ export class AppComponent {
       }
 
       /**
-       *Место где произходит проверка нп вход TODO: можно лучше
+       * Место где произходит проверка нп вход TODO: можно лучше
        */
+
       if (!this.loggedIn) {
         this.router.navigate(['login']);
       } else {
-        this.router.navigate(['cabinet']);
+        if (role === 'client') {
+          this.router.navigate(['cabinet']);
+        } else {
+          this.router.navigate(['admin']);
+        }
       }
 
     });
@@ -85,7 +90,6 @@ export class AppComponent {
     localStorage.clear();
     this.headerService.setTitle('Добро пожаловать, гость!');
     this.router.navigate(['login']).then(() =>
-      // console.log('logout')
       window.location.reload()
      );
   }

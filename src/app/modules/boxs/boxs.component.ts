@@ -5,6 +5,7 @@ import {Role} from '../../beans/role';
 import {NgModel} from '@angular/forms';
 import {RestService} from '../../services/rest.service';
 import {NgSwitchCase} from '@angular/common';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-boxs',
@@ -18,10 +19,11 @@ export class BoxsComponent implements OnInit {
   public col = null;
   public row = null;
   // tslint:disable-next-line:variable-name
-  private role = localStorage.getItem('role');
+  public role = localStorage.getItem('role');
   mass = [];
 
-  constructor(private restService: RestService) { }
+  constructor(private restService: RestService) {
+  }
 
   ngOnInit() {
     if (this.role === 'admin') {
@@ -32,7 +34,8 @@ export class BoxsComponent implements OnInit {
       ];
     } else {
       this.mass = [
-        {id: '1', name: 'показать пустые' }
+        {id: '1', name: 'показать пустые' },
+        {id: '2', name: 'показать все' }
       ];
     }
   }
@@ -51,7 +54,7 @@ export class BoxsComponent implements OnInit {
           }
           break;
       }
- }
+  }
 
   getAll() {
     this.restService.call('box/show/all', null, 'GET')
@@ -87,7 +90,7 @@ export class BoxsComponent implements OnInit {
     };
     this.restService.call('box/add', params, 'POST')
       .subscribe((res: any) => {
-          if (res === true) {
+          if (res === null) {
             window.alert('Бокс добавлен.');
           } else {
             window.alert('Ошибка добавления бокса.');

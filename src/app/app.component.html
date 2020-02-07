@@ -5,28 +5,27 @@
 </div> -->
 <!--  ------------------>
 <ul>
-  <li>
+
+
+  <li *ngIf="loggedIn==true">
     <a routerLink="/home" >Сделки</a>
   </li>
 
-<!--  <li>-->
-<!--    <a routerLink="/routes">Расписание</a>-->
-<!--  </li>-->
-
-  <li *ngIf="loggedIn==true">
+  <li *ngIf="(loggedIn==true)&&(isAdmin==false)">
     <a routerLink="/cabinet">Личный кабинет</a>
   </li>
 
   <li *ngIf="isAdmin==true">
     <a routerLink="/admin">Панель администратора</a>
   </li>
+
   <li>
     <a routerLink="/boxs">Боксы</a>
   </li>
 
-<!--  <li class="active" *ngIf="!loggedIn" style="float:right">-->
-<!--    <a routerLink="/login">Войти</a>-->
-<!--  </li>-->
+  <li class="active" *ngIf="!loggedIn" style="float:right">
+    <a routerLink="/login">Войти</a>
+  </li>
 
   <li class="active" *ngIf="loggedIn==true" style="float:right">
     <a (click)="logOut()">Выйти</a>

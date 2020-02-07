@@ -3,4 +3,5 @@ export interface Box {
   col: number;
   row: number;
   occupied: boolean;
+  coefficient: string;
 }
