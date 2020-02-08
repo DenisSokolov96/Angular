@@ -26,6 +26,7 @@ export class BoxsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAll();
     if (this.role === 'admin') {
       this.mass = [
         {id: '1', name: 'показать пустые' },

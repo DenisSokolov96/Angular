@@ -77,7 +77,7 @@ export class AppComponent {
         this.router.navigate(['login']);
       } else {
         if (role === 'client') {
-          this.router.navigate(['cabinet']);
+          this.router.navigate(['persondata']);
         } else {
           this.router.navigate(['admin']);
         }
