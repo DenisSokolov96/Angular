@@ -13,46 +13,50 @@
   });
 </script>
 
-<div id="table-wrapper" *ngIf="(selected==1)||(dataAcc.length!=0)">
+<div id="table-wrapper">
   <div id="table-scroll">
     <table  class="blueTable">
       <thead>
       <tr>
 
         <td>
-          <small>ID Аккаунта </small>
+          <small>ID Автомобиля </small>
+        </td>
+
+
+        <td>
+          <small> Регистрационный номер </small>
         </td>
 
         <td>
-          <small>Логин</small>
+          <small> Логин </small>
         </td>
 
-        <td>
-          <small>ID Роли </small>
-        </td>
         <td>
           <small> Роль </small>
         </td>
+
       </tr>
       </thead>
 
-      <tr *ngFor="let elem of dataAcc ">
+      <tr *ngFor="let elem of dataAuto ">
 
         <td>
           <strong> {{elem.id}} </strong>
         </td>
 
         <td>
-          <strong> {{elem.login}} </strong>
+          <strong> {{elem.reg_number}} </strong>
         </td>
 
         <td>
-          <strong> {{elem.role.id}} </strong>
+          <strong> {{elem.account.login}} </strong>
         </td>
+
         <td>
-          <strong *ngIf="elem.role.id==2"> клиент </strong>
-          <strong *ngIf="elem.role.id==1"> администратор </strong>
+          <strong> {{elem.account.role.name}} </strong>
         </td>
+
       </tr>
     </table>
   </div>
@@ -73,7 +77,7 @@
 
   <tr>
     <td>
-      <div class="panel">
+      <div class="auto">
         <select class="form-control" name="company"
                 [(ngModel)]="selected" #dataInput="ngModel">
           <option  *ngFor="let elem of mass" [value]="elem.id">
@@ -87,7 +91,7 @@
   <tr>
     <td>
       <div  class="form-group">
-        <button class="btn btn-default" (click)="getData(selected, login, newRole)">
+        <button class="btn btn-default" (click)="selectData(selected)">
           Выполнить
         </button>
       </div>
@@ -96,14 +100,24 @@
 
   <tr>
     <td>
-      <small *ngIf="selected==2">Выберите логин</small>
+      <div class="form-group" *ngIf="(selected==1)">
+        <input class="form-control" name="x" placeholder="Введите рег. номер"
+               [(ngModel)]="nomer" #colInput="ngModel" />
+      </div>
     </td>
   </tr>
 
   <tr>
     <td>
-      <div class="panel" *ngIf="selected==2">
-        <select class="form-control" name="company" id="log"
+      <small *ngIf="(selected==1)&&(role=='admin')">Введите логин</small>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>
+      <div class="auto" *ngIf="(selected==1)&&(role=='admin')">
+        <select class="form-control" name="selectlogin"
                 [(ngModel)]="login" #dataInput="ngModel">
           <option  *ngFor="let elem of dataAcc" [value]="elem.login">
             {{elem.login}}
@@ -113,23 +127,5 @@
     </td>
   </tr>
 
-  <tr>
-    <td>
-      <small *ngIf="selected==2">Выберите роль</small>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-      <div class="panel" *ngIf="selected==2">
-        <select class="form-control" name="company"
-                [(ngModel)]="newRole" #dataInput="ngModel">
-          <option  *ngFor="let elem of massRole" [value]="elem.id">
-            {{elem.name}}
-          </option>
-        </select>
-      </div>
-    </td>
-  </tr>
 
 </table>

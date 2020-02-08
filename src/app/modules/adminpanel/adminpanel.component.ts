@@ -74,7 +74,6 @@ export class AdminpanelComponent implements OnInit {
           return res;
         },
         error => {
-          localStorage.clear();
           window.alert('Ошибка изменения данных: \n' + error);
         });
   }

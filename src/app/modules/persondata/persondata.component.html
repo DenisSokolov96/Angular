@@ -1,0 +1,32 @@
+<table class="inputForm">
+  <div class="form-group">
+    <input class="form-control" name="title" placeholder="Введите новое имя"
+           [(ngModel)]="newName" #nameInput="ngModel" />
+  </div>
+  <div class="form-group">
+    <input  class="form-control" name="price" placeholder="Введит новую фамилию"
+            [(ngModel)]="newSurname" #surnameInput="ngModel" />
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-default" (click)="changePersonData()">
+      Изменить
+    </button>
+  </div>
+</table>
+
+
+<table  class="fon1">
+
+  <tr>
+    <td>
+      <small> Имя: {{dataPerson.name}}</small>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <small> Фамилия: {{dataPerson.surname}}</small>
+    </td>
+  </tr>
+</table>

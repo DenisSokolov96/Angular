@@ -1,0 +1,163 @@
+button{
+  background-color: #afabab;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 80px;
+}
+button:hover,
+button:focus {
+  background: #8f61ba;
+}
+
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
+
+table.blueTableActive {
+  border: 1px solid #a4003a;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.blueTableActive td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTableActive tbody td {
+  font-size: 13px;
+}
+table.blueTableActive tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTableActive thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTableActive thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTableActive thead th:first-child {
+  border-left: none;
+}
+
+
+table.blueTableActive tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTableActive tfoot td {
+  font-size: 14px;
+}
+table.blueTableActive tfoot .links {
+  text-align: center;
+}
+table.blueTableActive tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+Strong {
+  color: #555555; /* Цвет символа */
+  /*font-size: 200%; !* Размер шрифта *!*/
+}
+Small {
+  color: rgb(245, 245, 245); /* Цвет текста */
+  font-size: 150%;
+}
+
+#table-wrapper {
+  position:relative;
+  margin-left: 25%;
+}
+#table-scroll {
+  height:450px;
+  overflow:auto;
+  margin-top:20px;
+}
+#table-wrapper table {
+  width: 100%;
+}
+
+#table-wrapper2 {
+  position:relative;
+  margin-left: 25%;
+}
+#table-scroll2 {
+  height:450px;
+  overflow:auto;
+  margin-top:20px;
+}
+#table-wrapper2 table {
+  width: 100%;
+}
+
+.inputForm{
+  position: absolute;
+  top: 200px;
+  left: 50px;
+  color: #f5f5f5;
+  background-color: rgba(40, 40, 40, 0.7);
+  border-radius: 50px;
+  padding: 20px;
+  text-align: center;
+}
+
+#inputForm {
+  position:relative;
+}
+#inputForm {
+  height:450px;
+  overflow:auto;
+  margin-top:20px;
+}
+#inputForm {
+  width: 100%;
+}
+
+
+* {
+  outline: 0 !important;
+}
+
+.deal select {
+  background-color: #fffbfb;
+  color: #000000;
+  padding: 12px;
+  width: 280px;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 5px 25px rgba(245, 245, 245, 0.2);
+  -webkit-appearance: button;
+  appearance: auto;
+  outline: none;
+  border-radius: 80px
+}
+
+input{
+  color: #444444;
+  border-radius: 80px;
+  text-align: center;
+}
+

@@ -1,0 +1,210 @@
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+<!--<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">-->
+<!--<div class="container">-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+</script>
+<script>
+  $(document).ready(function(){
+    $('#myTable').dataTable();
+  });
+</script>
+
+<div id="table-wrapper" *ngIf="role=='client'">
+  <div id="table-scroll">
+    <table  class="blueTableActive">
+      <thead>
+      <tr>
+
+        <td>
+          <small> Номер сделки </small>
+        </td>
+
+        <td>
+          <small> Коэф. стоимости </small>
+        </td>
+
+        <td>
+          <small> Местоположение </small>
+        </td>
+
+        <td>
+          <small> Статус бокса </small>
+        </td>
+
+        <td>
+          <small> Дата и время сделки </small>
+        </td>
+
+
+      </tr>
+      </thead>
+
+      <tr *ngFor="let elem of deals ">
+
+        <td>
+          <strong> {{elem.id}} </strong>
+        </td>
+
+        <td>
+          <strong> {{elem.box.coefficient}} </strong>
+        </td>
+
+        <td>
+          <strong> {{elem.box.col}} {{elem.box.row}} </strong>
+        </td>
+
+        <td>
+          <strong *ngIf="elem.box.occupied"> занят </strong>
+          <strong *ngIf="!elem.box.occupied"> пустой </strong>
+        </td>
+
+        <td>
+          <strong> {{elem.dateTime}} </strong>
+        </td>
+
+
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div id="table-wrapper2" *ngIf="role=='admin'">
+  <div id="table-scroll2">
+    <table  class="blueTableActive">
+      <thead>
+      <tr>
+
+        <td>
+          <small> Номер сделки </small>
+        </td>
+
+        <td>
+          <small> Логин </small>
+        </td>
+
+        <td>
+          <small> Роль </small>
+        </td>
+
+        <td>
+          <small> Статус бокса </small>
+        </td>
+
+        <td>
+          <small> Статус сделки </small>
+        </td>
+
+        <td>
+          <small> Дата и время сделки </small>
+        </td>
+
+
+      </tr>
+      </thead>
+
+      <tr *ngFor="let elem of deals ">
+
+        <td>
+          <strong> {{elem.id}} </strong>
+        </td>
+
+        <td>
+          <strong> {{elem.login}} </strong>
+        </td>
+
+        <td>
+          <strong *ngIf="elem.role.id==2"> клиент </strong>
+          <strong *ngIf="elem.role.id==1"> администратор </strong>
+        </td>
+
+        <td>
+          <strong *ngIf="elem.box.occupied==true"> занят </strong>
+          <strong *ngIf="elem.box.occupied==false"> пустой </strong>
+        </td>
+
+        <td>
+          <strong *ngIf="elem.status==true"> активная </strong>
+          <strong *ngIf="elem.status==false"> не активная </strong>
+        </td>
+
+        <td>
+          <strong> {{elem.dateTime}} </strong>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<table class="inputForm">
+
+
+  <thead>
+  <tr>
+
+    <td>
+      <small>Выбрать</small>
+    </td>
+
+  </tr>
+  </thead>
+
+  <tr>
+    <td>
+      <div class="deal">
+        <select class="form-control" name="company"
+                [(ngModel)]="selected" #dataInput="ngModel">
+          <option  *ngFor="let elem of mass" [value]="elem.id">
+            {{elem.name}}
+          </option>
+        </select>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div  class="form-group">
+        <button class="btn btn-default" (click)="selectData()">
+          Выполнить
+        </button>
+      </div>
+    </td>
+  </tr>
+
+<!--  <tr>
+    <td>
+      <div class="form-group" *ngIf="(selected==1)">
+        <input class="form-control" name="x" placeholder="Введите рег. номер"
+               [(ngModel)]="nomer" #colInput="ngModel" />
+      </div>
+    </td>
+  </tr>-->
+
+<!--  <tr>
+    <td>
+      <small *ngIf="(selected==1)&&(role=='admin')">Введите логин</small>
+    </td>
+  </tr>-->
+
+
+<!--  <tr>
+    <td>
+      <div class="deal" *ngIf="(selected==1)&&(role=='admin')">
+        <select class="form-control" name="selectlogin"
+                [(ngModel)]="login" #dataInput="ngModel">
+          <option  *ngFor="let elem of dataAcc" [value]="elem.login">
+            {{elem.login}}
+          </option>
+        </select>
+      </div>
+    </td>
+  </tr>-->
+
+
+</table>

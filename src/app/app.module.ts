@@ -7,10 +7,8 @@ import {HeaderService} from './services/header.service';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './modules/login/login.component';
-import {MainComponent} from './modules/main/main.component';
 import {RestService} from './services/rest.service';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import {HttpModule} from '@angular/http';
 import {AuthService} from './services/auth.service';
 import {AuthGuardService} from './services/auth-guard.service';
 
@@ -24,15 +22,16 @@ import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AutosComponent } from './modules/autos/autos.component';
 import { PersondataComponent } from './modules/persondata/persondata.component';
+import { DealspanelComponent } from './modules/dealspanel/dealspanel.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'home', component: MainComponent},
   {path: 'admin', component: AdminpanelComponent},
   {path: 'boxs', component: BoxsComponent},
   {path: 'app', component: AppComponent},
   {path: 'auto', component: AutosComponent},
   {path: 'persondata', component: PersondataComponent},
+  {path: 'deals', component: DealspanelComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ];
@@ -64,12 +63,12 @@ const appRoutes: Routes = [
 
   declarations: [
     AppComponent,
-    MainComponent,
     LoginComponent,
     AdminpanelComponent,
     BoxsComponent,
     AutosComponent,
-    PersondataComponent
+    PersondataComponent,
+    DealspanelComponent
   ],
   bootstrap: [AppComponent]
 })

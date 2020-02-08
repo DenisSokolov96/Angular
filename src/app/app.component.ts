@@ -1,10 +1,10 @@
 import {Component, Injectable} from '@angular/core';
 import {HeaderService} from './services/header.service';
 import {Router} from '@angular/router';
-import {ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
 
+  // tslint:disable-next-line:component-selector
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
