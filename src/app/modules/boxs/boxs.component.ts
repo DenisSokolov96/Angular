@@ -98,7 +98,7 @@ export class BoxsComponent implements OnInit {
           return res;
         },
         error => {
-          localStorage.clear();
+          // localStorage.clear();
           window.alert('Ошибка добавления бокса: \n' + error);
         });
   }

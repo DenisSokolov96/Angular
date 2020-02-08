@@ -23,6 +23,7 @@ import {ErrorInterceptor} from './services/error.interceptor';
 import { BoxsComponent } from './modules/boxs/boxs.component';
 import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AutosComponent } from './modules/autos/autos.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   {path: 'cabinet', component: CabinetComponent},
   {path: 'boxs', component: BoxsComponent},
   {path: 'app', component: AppComponent},
+  {path: 'auto', component: AutosComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ];
@@ -66,7 +68,8 @@ const appRoutes: Routes = [
     LoginComponent,
     AdminpanelComponent,
     CabinetComponent,
-    BoxsComponent
+    BoxsComponent,
+    AutosComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -128,11 +128,11 @@ Small {
   outline: 0 !important;
 }
 
-.box select {
+.panel select {
   background-color: #fffbfb;
   color: #000000;
   padding: 12px;
-  width: 200px;
+  width: 280px;
   border: none;
   font-size: 18px;
   box-shadow: 0 5px 25px rgba(245, 245, 245, 0.2);

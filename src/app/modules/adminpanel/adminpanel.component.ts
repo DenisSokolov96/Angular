@@ -19,18 +19,28 @@ export class AdminpanelComponent implements OnInit {
     {id: '1', name: 'просмотреть список аккаунтов' },
     {id: '2', name: 'сменить роль' }];
 
+  massRole = [
+    {id: '1', name: 'Администратор' },
+    {id: '2', name: 'Клиент' }];
+
+
   constructor(private restService: RestService) { }
 
   ngOnInit() {
+    this.listAccount();
   }
 
-  selectData( select: string/*, log: string, newR: string*/) {
+  getData( select: string, log: string, newR: string) {
     switch (select) {
       case '1' :
           this.listAccount();
           break;
       case '2' :
-          this.changeRole(/*log, newR*/);
+          if (newR === '1' ) {
+            this.changeRole(log, 'admin');
+          } else {
+            this.changeRole(log, 'client');
+          }
           break;
     }
   }
@@ -47,16 +57,20 @@ export class AdminpanelComponent implements OnInit {
         });
   }
 
-  changeRole(/*log: string, newR: string*/) {
-    this.newRoleChange.name = 'admin';
-    this.newRoleChange.id = 1;
+  changeRole(log: string, newR: string) {
+
     const params = {
-      login: 'NewUser2', // log,
-      role: this.newRoleChange,
-      name: 'user5'
+      login: log,
+      newRole: newR
     };
     this.restService.call('roles/change', params, 'POST')
       .subscribe((res: any) => {
+          console.log(res);
+          if (res === true) {
+            this.listAccount();
+          } else {
+           window.alert('Ошибка смены роли.');
+          }
           return res;
         },
         error => {

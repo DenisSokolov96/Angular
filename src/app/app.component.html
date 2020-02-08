@@ -11,6 +11,10 @@
     <a routerLink="/home" >Сделки</a>
   </li>
 
+  <li *ngIf="loggedIn==true">
+    <a routerLink="/auto" >Автомобиль</a>
+  </li>
+
   <li *ngIf="(loggedIn==true)&&(isAdmin==false)">
     <a routerLink="/cabinet">Личный кабинет</a>
   </li>
