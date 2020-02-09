@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../../services/rest.service';
-import {Box} from '../../beans/box';
 import {Payment} from '../../beans/Payment';
 
 @Component({
@@ -19,9 +18,6 @@ export class PaymentComponent implements OnInit {
   constructor(private restService: RestService) { }
 
   ngOnInit() {
-   /* const now = new Date(). .format("yyyy-MM-ddThh:mm:ss");
-    window.alert(now.getFullYear() + ' ' + now.getTime());*/
-
     if (this.role === 'admin') {
       this.getAllPay();
       this.mass = [
@@ -74,7 +70,7 @@ export class PaymentComponent implements OnInit {
   }
 
   getAllPay() {
-    this.restService.call('payment/show/my', null, 'GET')
+    this.restService.call('payment/show/all', null, 'GET')
       .subscribe((res: any) => {
           this.dataPays = [];
           this.dataPays = res;
@@ -87,6 +83,8 @@ export class PaymentComponent implements OnInit {
   }
 
   payIncome() {
+
+    // 2020-02-07T15:40:26.071+03:00[Europe/Moscow]
     const now = new Date();
     const params = {
       dateTime: now,
