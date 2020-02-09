@@ -171,9 +171,7 @@
         <select class="form-control" name="company"
                 [(ngModel)]="selectBox" #dataInput="ngModel">
           <option *ngFor="let elem of dataBox" [value]="elem.id">
-            <!--<div *ngIf="elem.status">-->
             ID: {{elem.id}} Место: {{elem.col}} {{elem.row}}
-            <!--</div>-->
           </option>
         </select>
       </div>

@@ -136,7 +136,7 @@ export class DealspanelComponent implements OnInit {
 
   creatDeal() {
     const params = {
-     box_id: 26
+     box_id: this.selectBox
     };
     this.restService.call('deal/create', params, 'POST')
       .subscribe((res: any) => {
