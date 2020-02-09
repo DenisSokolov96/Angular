@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
 
     // inputLogin = 'NewUser2';
     // inputPassword = 'pass';
-    // inputLogin = 'Oleg';
-    // inputPassword = 'pass';
+    inputLogin = 'Oleg';
+    inputPassword = 'pass';
 
     const authData = btoa(inputLogin + ':' + inputPassword);
 

@@ -19,7 +19,7 @@
       <thead>
       <tr>
 
-        <td>
+        <td *ngIf="role=='admin'">
           <small> Номер сделки </small>
         </td>
 
@@ -49,7 +49,7 @@
 
       <tr *ngFor="let elem of deals ">
 
-        <td>
+        <td  *ngIf="role=='admin'">
           <strong> {{elem.id}} </strong>
         </td>
 

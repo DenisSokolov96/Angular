@@ -66,7 +66,6 @@ export class BoxsComponent implements OnInit {
           return res;
         },
         error => {
-          localStorage.clear();
           window.alert('Ошибка получения всех боксов: \n' + error);
         });
   }
@@ -79,7 +78,6 @@ export class BoxsComponent implements OnInit {
           return res;
         },
         error => {
-          localStorage.clear();
           window.alert('Ошибка получения пустых боксов: \n' + error);
         });
   }
@@ -99,7 +97,6 @@ export class BoxsComponent implements OnInit {
           return res;
         },
         error => {
-          // localStorage.clear();
           window.alert('Ошибка добавления бокса: \n' + error);
         });
   }

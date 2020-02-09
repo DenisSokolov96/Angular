@@ -23,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AutosComponent } from './modules/autos/autos.component';
 import { PersondataComponent } from './modules/persondata/persondata.component';
 import { DealspanelComponent } from './modules/dealspanel/dealspanel.component';
+import { PaymentComponent } from './modules/payment/payment.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   {path: 'auto', component: AutosComponent},
   {path: 'persondata', component: PersondataComponent},
   {path: 'deals', component: DealspanelComponent},
+  {path: 'payments', component: PaymentComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ];
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
     BoxsComponent,
     AutosComponent,
     PersondataComponent,
-    DealspanelComponent
+    DealspanelComponent,
+    PaymentComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -19,7 +19,7 @@
       <thead>
       <tr>
 
-        <td>
+        <td  *ngIf="role=='admin'">
           <small>ID Автомобиля </small>
         </td>
 
@@ -41,7 +41,7 @@
 
       <tr *ngFor="let elem of dataAuto ">
 
-        <td>
+        <td  *ngIf="role=='admin'">
           <strong> {{elem.id}} </strong>
         </td>
 
