@@ -1,48 +1,24 @@
-/*p{*/
-/*    text-align: center;*/
-/*    color: #f5f5f5;*/
-/*}*/
+button{
+  background-color: #afabab;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 80px;
+}
+button:hover,
+button:focus {
+  background: #8f61ba;
+}
 
-/*.container{*/
-/*    background-color:  rgba(40, 40, 40, 0.7);*/
-/*    border-radius:25px;*/
-/*    padding: 20px;*/
-
-/*}*/
-
-/*.style1{*/
-/*    color: #f5f5f5;*/
-/*    !* font-family: ‘Open Sans Condensed’, sans-serif;  *!*/
-/*    font-size: 24px;*/
-/*    font-weight: 700;*/
-/*    line-height: 64px;*/
-/*    margin: 0 0 0;*/
-/*    padding: 0px 0px;*/
-/*    text-align: center;*/
-/*    text-transform: uppercase;*/
-/*}*/
-
-/*.style2{*/
-/*    text-align: justify;*/
-/*    font-size: 18px;*/
-/*    !* font-family: 'Bitter'; *!*/
-/*    color: #f5f5f5;*/
-/*}*/
-
-/*table{*/
-/*  text-align: left;*/
-/*  vertical-align: top;*/
-/*  margin: auto;*/
-/*  width: 100%;*/
-/*}*/
-/*tr{*/
-/*  vertical-align: top;*/
-/*  text-align: center;*/
-/*}*/
-/*th{*/
-/*  vertical-align: top;*/
-/*  text-align: center;*/
-/*}*/
+button:focus {
+  outline: 1px solid #fff;
+  outline-offset: -4px;
+}
 
 table.blueTable {
   border: 1px solid #a4003a;
@@ -113,6 +89,7 @@ Small {
 
 #table-wrapper {
   position:relative;
+  margin-left: 25%;
 }
 #table-scroll {
   height:450px;
@@ -123,43 +100,15 @@ Small {
   width: 100%;
 }
 
-button{
-  background-color: #afabab;
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 80px;
-}
-button:hover,
-button:focus {
-  background: #8f61ba;
-}
-
-button:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
-}
-
-* {
-  outline: 0 !important;
-}
-
-td{
-  padding: 8px;
-}
-
 .inputForm{
-  position: center;
-  top: 70%;
+  position: absolute;
+  top: 200px;
+  left: 50px;
   color: #f5f5f5;
   background-color: rgba(40, 40, 40, 0.7);
   border-radius: 50px;
   padding: 20px;
+  text-align: center;
 }
 
 #inputForm {
@@ -174,11 +123,16 @@ td{
   width: 100%;
 }
 
-.box select {
+
+* {
+  outline: 0 !important;
+}
+
+.auto select {
   background-color: #fffbfb;
   color: #000000;
   padding: 12px;
-  width: 200px;
+  width: 280px;
   border: none;
   font-size: 18px;
   box-shadow: 0 5px 25px rgba(245, 245, 245, 0.2);
@@ -188,6 +142,9 @@ td{
   border-radius: 80px
 }
 
-table{
+input{
+  color: #444444;
+  border-radius: 80px;
   text-align: center;
 }
+

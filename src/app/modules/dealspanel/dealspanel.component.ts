@@ -13,9 +13,15 @@ import {NgModel} from '@angular/forms';
 export class DealspanelComponent implements OnInit {
 
   public deals: Array<Deal> = new Array<Deal>();
+  public dealsActive: Array<Deal> = new Array<Deal>();
+  public dealsActiveAll: Array<Deal> = new Array<Deal>();
   public role = localStorage.getItem('role');
   mass = [];
   public selected = null;
+  public selectDis = null;
+  public selectBox = null;
+  public dataBox: Array<Box> = new Array<Box>();
+  massID = [];
 
   public value;
   selectedBox: Box;
@@ -26,6 +32,7 @@ export class DealspanelComponent implements OnInit {
   ngOnInit() {
     if (this.role === 'admin') {
       this.showAllDeals();
+      this.getFree();
       this.mass = [
         {id: '1', name: 'Создать сделку'},
         {id: '2', name: 'Расторгнуть сделку'},
@@ -33,6 +40,7 @@ export class DealspanelComponent implements OnInit {
       ];
     } else {
       this.showMyActive();
+      this.getFree();
       this.mass = [
         {id: '1', name: 'Создать сделку'},
         {id: '2', name: 'Расторгнуть сделку'},
@@ -68,6 +76,16 @@ export class DealspanelComponent implements OnInit {
           break;
         case '3':
           this.showAllDeals();
+/*
+          let num = 0;
+          for (num = 0; num < this.dealsActiveAll.length; num++) {
+            if (!this.dealsActiveAll[num].status) {
+              console.log(' Я тут ' + this.dealsActiveAll.length + ' ' + this.deals.length);
+              this.dealsActiveAll.splice(num, 1);
+              console.log(' Я тут ' + this.dealsActiveAll.length + ' ' + this.deals.length);
+            }
+          }
+*/
           break;
       }
     }
@@ -78,6 +96,8 @@ export class DealspanelComponent implements OnInit {
       .subscribe((res: any) => {
           this.deals = [];
           this.deals = res;
+          this.dealsActive = [];
+          this.dealsActive = this.deals;
           return res;
         },
         error => {
@@ -104,6 +124,8 @@ export class DealspanelComponent implements OnInit {
       .subscribe((res: any) => {
           this.deals = [];
           this.deals = res;
+          this.dealsActiveAll = [];
+          this.dealsActiveAll = res;
           return res;
         },
         error => {
@@ -114,19 +136,17 @@ export class DealspanelComponent implements OnInit {
 
   creatDeal() {
     const params = {
-
+     box_id: 26
     };
     this.restService.call('deal/create', params, 'POST')
       .subscribe((res: any) => {
           console.log(res);
-          if (res === true) {
-            if (this.role === 'client') {
-                this.showMyActive();
-            } else {
-              this.showAllDeals();
-            }
+          if (this.role === 'client') {
+              this.showMyActive();
+              this.getFree();
           } else {
-            window.alert('Ошибка создания сделки.');
+            this.showAllDeals();
+            this.getFree();
           }
           return res;
         },
@@ -137,24 +157,32 @@ export class DealspanelComponent implements OnInit {
 
   disabledDeal() {
     const params = {
-
+      deal_id: this.selectDis
     };
     this.restService.call('deal/disable', params, 'POST')
       .subscribe((res: any) => {
           console.log(res);
-          if (res === true) {
-            if (this.role === 'client') {
-              this.showMyDisabled();
-            } else {
-              this.showAllDeals();
-            }
+          if (this.role === 'client') {
+            this.showMyActive();
           } else {
-            window.alert('Ошибка расторжения сделки.');
+            this.showAllDeals();
           }
           return res;
         },
         error => {
           window.alert('Ошибка расторжения сделки: \n' + error);
+        });
+  }
+  getFree() {
+    this.restService.call('box/show/free', null, 'GET')
+      .subscribe((res: any) => {
+          this.dataBox = [];
+          this.dataBox = res;
+          return res;
+        },
+        error => {
+          localStorage.clear();
+          window.alert('Ошибка получения пустых боксов: \n' + error);
         });
   }
 

@@ -13,7 +13,7 @@
   });
 </script>
 
-<div id="table-wrapper" *ngIf="role=='client'">
+<div id="table-wrapper">
   <div id="table-scroll">
     <table  class="blueTableActive">
       <thead>
@@ -33,6 +33,10 @@
 
         <td>
           <small> Статус бокса </small>
+        </td>
+
+        <td>
+          <small> Статус сделки </small>
         </td>
 
         <td>
@@ -63,77 +67,15 @@
         </td>
 
         <td>
-          <strong> {{elem.dateTime}} </strong>
+          <strong *ngIf="(elem.status)"> активная </strong>
+          <strong *ngIf="(!elem.status)"> расторгнутая </strong>
         </td>
 
-
-      </tr>
-    </table>
-  </div>
-</div>
-
-<div id="table-wrapper2" *ngIf="role=='admin'">
-  <div id="table-scroll2">
-    <table  class="blueTableActive">
-      <thead>
-      <tr>
-
-        <td>
-          <small> Номер сделки </small>
-        </td>
-
-        <td>
-          <small> Логин </small>
-        </td>
-
-        <td>
-          <small> Роль </small>
-        </td>
-
-        <td>
-          <small> Статус бокса </small>
-        </td>
-
-        <td>
-          <small> Статус сделки </small>
-        </td>
-
-        <td>
-          <small> Дата и время сделки </small>
-        </td>
-
-
-      </tr>
-      </thead>
-
-      <tr *ngFor="let elem of deals ">
-
-        <td>
-          <strong> {{elem.id}} </strong>
-        </td>
-
-        <td>
-          <strong> {{elem.login}} </strong>
-        </td>
-
-        <td>
-          <strong *ngIf="elem.role.id==2"> клиент </strong>
-          <strong *ngIf="elem.role.id==1"> администратор </strong>
-        </td>
-
-        <td>
-          <strong *ngIf="elem.box.occupied==true"> занят </strong>
-          <strong *ngIf="elem.box.occupied==false"> пустой </strong>
-        </td>
-
-        <td>
-          <strong *ngIf="elem.status==true"> активная </strong>
-          <strong *ngIf="elem.status==false"> не активная </strong>
-        </td>
 
         <td>
           <strong> {{elem.dateTime}} </strong>
         </td>
+
 
       </tr>
     </table>
@@ -177,34 +119,66 @@
     </td>
   </tr>
 
-<!--  <tr>
+
+  <tr *ngIf="(selected==2)">
     <td>
-      <div class="form-group" *ngIf="(selected==1)">
-        <input class="form-control" name="x" placeholder="Введите рег. номер"
-               [(ngModel)]="nomer" #colInput="ngModel" />
-      </div>
+      <small>Выберите ID</small>
     </td>
-  </tr>-->
+  </tr>
 
-<!--  <tr>
+  <div *ngIf="role=='client'">
+  <tr *ngIf="(selected==2)">
     <td>
-      <small *ngIf="(selected==1)&&(role=='admin')">Введите логин</small>
-    </td>
-  </tr>-->
-
-
-<!--  <tr>
-    <td>
-      <div class="deal" *ngIf="(selected==1)&&(role=='admin')">
-        <select class="form-control" name="selectlogin"
-                [(ngModel)]="login" #dataInput="ngModel">
-          <option  *ngFor="let elem of dataAcc" [value]="elem.login">
-            {{elem.login}}
+      <div class="deal">
+        <select class="form-control" name="company"
+                [(ngModel)]="selectDis" #dataInput="ngModel">
+          <option *ngFor="let elem of dealsActive" [value]="elem.id">
+            <div *ngIf="elem.status">
+              {{elem.id}}
+            </div>
           </option>
         </select>
       </div>
     </td>
-  </tr>-->
+  </tr>
+  </div>
+  <div *ngIf="role=='admin'">
+    <tr *ngIf="(selected==2)">
+      <td>
+        <div class="deal">
+          <select class="form-control" name="company"
+                  [(ngModel)]="selectDis" #dataInput="ngModel">
+            <option *ngFor="let elem of dealsActiveAll" [value]="elem.id">
+              <!--<div *ngIf="elem.status">-->
+                {{elem.id}}
+              <!--</div>-->
+            </option>
+          </select>
+        </div>
+      </td>
+    </tr>
+  </div>
+
+  <tr *ngIf="(selected==1)">
+    <td>
+      <small>Выберите ID</small>
+    </td>
+  </tr>
+
+  <tr *ngIf="(selected==1)">
+    <td>
+      <div class="deal">
+        <select class="form-control" name="company"
+                [(ngModel)]="selectBox" #dataInput="ngModel">
+          <option *ngFor="let elem of dataBox" [value]="elem.id">
+            <!--<div *ngIf="elem.status">-->
+            ID: {{elem.id}} Место: {{elem.col}} {{elem.row}}
+            <!--</div>-->
+          </option>
+        </select>
+      </div>
+    </td>
+  </tr>
 
 
 </table>
