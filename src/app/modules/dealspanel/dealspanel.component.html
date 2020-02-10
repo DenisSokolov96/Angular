@@ -44,12 +44,12 @@
         </td>
 
         <td>
-          <small> Дата и время сделки </small>
+          <small> Дата сделки </small>
         </td>
 
-        <!--<td>
+        <td>
           <small> Расторжение сделки </small>
-        </td>-->
+        </td>
 
 
       </tr>
@@ -88,10 +88,10 @@
           <strong> {{elem.dateTime}} </strong>
         </td>
 
-        <!--<td>
-          <strong *ngIf="(!elem.status)"> {{elem.dateTime}} </strong>
-          <strong *ngIf="(elem.status)"> </strong>
-        </td>-->
+        <td>
+          <strong *ngIf="(!elem.status)"> {{elem.end_dateTime}} </strong>
+          <strong *ngIf="(elem.status)"></strong>
+        </td>
 
 
       </tr>

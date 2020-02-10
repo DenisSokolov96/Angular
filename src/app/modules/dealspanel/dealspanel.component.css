@@ -89,10 +89,10 @@ Small {
 
 #table-wrapper {
   position:relative;
-  margin-left: 25%;
+  margin-left: 10%;
 }
 #table-scroll {
-  height:450px;
+  height:550px;
   overflow:auto;
   margin-top:20px;
 }

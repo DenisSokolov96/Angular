@@ -6,5 +6,6 @@ export interface Deal {
   box: Box;
   status: boolean;
   dateTime: string;
+  end_dateTime: string;
   role: Role;
 }

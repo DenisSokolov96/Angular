@@ -35,10 +35,6 @@
           <small> Роль </small>
         </td>
 
-        <td>
-          <small> Дата начала</small>
-        </td>
-
         <td *ngIf="role=='admin'">
           <small> ID Сделки</small>
         </td>
@@ -56,11 +52,7 @@
         </td>
 
         <td>
-          <small> Статус бокса </small>
-        </td>
-
-        <td>
-          <small> Дата сделки </small>
+          <small> Дата платежа </small>
         </td>
 
         <td>
@@ -101,10 +93,6 @@
           <strong *ngIf="elem.account?.role.id==2"> Клиент  </strong>
         </td>
 
-        <td>
-          <strong> {{elem.date}} </strong>
-        </td>
-
         <td *ngIf="role=='admin'">
           <strong> {{elem.deal?.id}} </strong>
         </td>
@@ -122,12 +110,7 @@
         </td>
 
         <td>
-          <strong *ngIf="elem.deal?.box.occupied"> занят </strong>
-          <strong *ngIf="!elem.deal?.box.occupied"> пустой </strong>
-        </td>
-
-        <td>
-          <strong> {{elem.deal?.dateTime}} </strong>
+          <strong> {{elem.date}} </strong>
         </td>
 
         <td>
