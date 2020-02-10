@@ -19,6 +19,7 @@ export class BoxsComponent implements OnInit {
   public col = null;
   public row = null;
   public tarif = null;
+  public dell = null;
   // tslint:disable-next-line:variable-name
   public role = localStorage.getItem('role');
   mass = [];
@@ -32,7 +33,8 @@ export class BoxsComponent implements OnInit {
       this.mass = [
         {id: '1', name: 'показать пустые' },
         {id: '2', name: 'показать все' },
-        {id: '3', name: 'добавить' }
+        {id: '3', name: 'добавить бокс' },
+        {id: '4', name: 'удалить бокс' }
       ];
     } else {
       this.mass = [
@@ -54,6 +56,9 @@ export class BoxsComponent implements OnInit {
           if ( (col > -1) && (row > -1) ) {
           this.getAdd(col, row);
           }
+          break;
+        case '4' :
+          this.dellBox(this.dell);
           break;
       }
   }
@@ -100,6 +105,21 @@ export class BoxsComponent implements OnInit {
         },
         error => {
           window.alert('Ошибка добавления бокса: \n' + error);
+        });
+  }
+
+  dellBox(idB: string) {
+    const params = {
+      box_id: idB
+    };
+    this.restService.call('box/remove', params, 'POST')
+      .subscribe((res: any) => {
+          window.alert('Бокс удален.');
+          this.getAll();
+          return res;
+        },
+        error => {
+          window.alert('Ошибка удаления бокса: \n' + error);
         });
   }
 }

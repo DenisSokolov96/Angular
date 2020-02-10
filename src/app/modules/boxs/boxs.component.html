@@ -19,6 +19,10 @@
       <thead>
       <tr>
 
+        <td>
+          <small> № </small>
+        </td>
+
         <td  *ngIf="role=='admin'">
           <small>ID Бокса </small>
         </td>
@@ -36,7 +40,11 @@
       </tr>
       </thead>
 
-      <tr *ngFor="let elem of data ">
+      <tr *ngFor="let elem of data; index as i ">
+        <td scope="row">
+          <strong> {{i+1}} </strong>
+        </td>
+
 
         <td  *ngIf="role=='admin'">
           <strong> {{elem.id}} </strong>
@@ -118,6 +126,19 @@
       <div class="form-group" *ngIf="(role=='admin')&&(selected==3)">
         <input  class="form-control" name="t" placeholder="Тариф"  type="number" min="0" step="1.00"
                 [(ngModel)]="tarif" #rowInput="ngModel" />
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="box" *ngIf="(role=='admin')&&(selected==4)">
+        <select class="form-control" name="company"
+                [(ngModel)]="dell" #dataInput="ngModel">
+          <option  *ngFor="let elem of data" [value]="elem.id">
+            Бокс: {{elem.col}} {{elem.row}}
+          </option>
+        </select>
       </div>
     </td>
   </tr>

@@ -1,5 +1,6 @@
 import {Account} from './account';
 import {Deal} from './deal';
+import {Box} from './box';
 
 export interface Payment {
   id: number;

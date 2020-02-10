@@ -13,7 +13,7 @@ export class PaymentComponent implements OnInit {
   public selected = null;
   public role = localStorage.getItem('role');
   public summa = null;
-  public balance = null;
+  public balance = 0;
   mass = [];
 
   constructor(private restService: RestService) { }
@@ -111,18 +111,21 @@ export class PaymentComponent implements OnInit {
   getBalance() {
 
    let i: number;
-   let s: number;
+   let s = 0;
+   let sum: number;
 
    for ( i = 0; i < this.dataPays.length; i++) {
-      if (this.dataPays[i].type === 'outcome') {
-        s = s + parseInt(this.dataPays[i].type, 10);
-      } else {
-        s = s - parseInt(this.dataPays[i].type, 10);
+     if (this.dataPays[i].type === 'outcome') {
+        sum = this.dataPays[i].money;
+        s = s - sum;
+     } else {
+        sum = this.dataPays[i].money;
+        s = s + sum;
       }
     }
    s = s / 100;
    this.balance = s;
-   console.log(s + ' = ' + this.balance);
+   window.alert(s);
   }
 
 }

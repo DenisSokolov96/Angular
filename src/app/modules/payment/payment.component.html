@@ -19,6 +19,10 @@
       <thead>
       <tr>
 
+        <td>
+          <small> № </small>
+        </td>
+
         <td  *ngIf="role=='admin'">
           <small>ID Платежа </small>
         </td>
@@ -75,14 +79,14 @@
           <small> Операция </small>
         </td>
 
-        <td>
-          <small> </small>
-        </td>
-
       </tr>
       </thead>
 
-      <tr *ngFor="let elem of dataPays ">
+      <tr *ngFor="let elem of dataPays; index as i  ">
+
+        <td scope="row">
+          <strong> {{i+1}} </strong>
+        </td>
 
         <td  *ngIf="role=='admin'">
           <strong> {{elem.id}} </strong>
@@ -144,9 +148,9 @@
           <strong *ngIf="elem.type=='income'"> пополнение </strong>
         </td>
 
-        <td>
+<!--        <td>
           <strong> </strong>
-        </td>
+        </td>-->
 
       </tr>
     </table>
@@ -183,18 +187,8 @@
     </td>
 
     <td *ngIf="(role=='client')">
-      <small>{{balance}}</small>
+      <small> Баланс: {{balance}}</small>
     </td>
-
-    <thead>
-    <tr>
-
-      <td>
-        <small>Выбрать {{balance}}</small>
-      </td>
-
-    </tr>
-    </thead>
 
   </tr>
 </table>

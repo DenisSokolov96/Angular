@@ -19,6 +19,10 @@
       <thead>
       <tr>
 
+        <td>
+          <small> № </small>
+        </td>
+
         <td  *ngIf="role=='admin'">
           <small>ID Автомобиля </small>
         </td>
@@ -39,7 +43,11 @@
       </tr>
       </thead>
 
-      <tr *ngFor="let elem of dataAuto ">
+      <tr *ngFor="let elem of dataAuto; index as i  ">
+
+        <td scope="row">
+          <strong> {{i+1}} </strong>
+        </td>
 
         <td  *ngIf="role=='admin'">
           <strong> {{elem.id}} </strong>

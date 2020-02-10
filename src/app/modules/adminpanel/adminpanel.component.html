@@ -20,6 +20,10 @@
       <tr>
 
         <td>
+          <small> № </small>
+        </td>
+
+        <td>
           <small>ID Аккаунта </small>
         </td>
 
@@ -36,7 +40,11 @@
       </tr>
       </thead>
 
-      <tr *ngFor="let elem of dataAcc ">
+      <tr *ngFor="let elem of dataAcc; index as i ">
+
+        <td scope="row">
+          <strong> {{i+1}} </strong>
+        </td>
 
         <td>
           <strong> {{elem.id}} </strong>
