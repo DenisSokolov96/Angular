@@ -36,7 +36,7 @@
         </td>
 
         <td>
-          <small> Дата </small>
+          <small> Дата начала</small>
         </td>
 
         <td *ngIf="role=='admin'">
@@ -82,7 +82,7 @@
       </tr>
       </thead>
 
-      <tr *ngFor="let elem of dataPays; index as i  ">
+      <tr *ngFor="let elem of dataPays; index as i ">
 
         <td scope="row">
           <strong> {{i+1}} </strong>
@@ -93,12 +93,12 @@
         </td>
 
         <td *ngIf="role=='admin'">
-          <strong> {{elem.account.login}} </strong>
+          <strong> {{elem.account?.login}} </strong>
         </td>
 
         <td *ngIf="role=='admin'">
-          <strong *ngIf="elem.account.role.id==1"> Администратор  </strong>
-          <strong *ngIf="elem.account.role.id==2"> Клиент  </strong>
+          <strong *ngIf="elem.account?.role.id==1"> Администратор  </strong>
+          <strong *ngIf="elem.account?.role.id==2"> Клиент  </strong>
         </td>
 
         <td>
@@ -106,33 +106,33 @@
         </td>
 
         <td *ngIf="role=='admin'">
-          <strong> {{elem.deal.id}} </strong>
+          <strong> {{elem.deal?.id}} </strong>
         </td>
 
         <td *ngIf="role=='admin'">
-          <strong> {{elem.deal.box.id}} </strong>
+          <strong> {{elem.deal?.box.id}} </strong>
         </td>
 
         <td>
-          <strong> {{elem.deal.box.col}} {{elem.deal.box.row}} </strong>
+          <strong> {{elem.deal?.box.col}} {{elem.deal?.box.row}} </strong>
         </td>
 
         <td>
-          <strong> {{elem.deal.box.coefficient}} </strong>
+          <strong> {{elem.deal?.box.coefficient}} </strong>
         </td>
 
         <td>
-          <strong *ngIf="elem.deal.box.occupied"> занят </strong>
-          <strong *ngIf="!elem.deal.box.occupied"> пустой </strong>
+          <strong *ngIf="elem.deal?.box.occupied"> занят </strong>
+          <strong *ngIf="!elem.deal?.box.occupied"> пустой </strong>
         </td>
 
         <td>
-          <strong> {{elem.deal.dateTime}} </strong>
+          <strong> {{elem.deal?.dateTime}} </strong>
         </td>
 
         <td>
-          <strong *ngIf="elem.deal.status"> активна </strong>
-          <strong *ngIf="!elem.deal.status"> расторгнута </strong>
+          <strong *ngIf="elem.deal?.status"> активна </strong>
+          <strong *ngIf="!elem.deal?.status"> расторгнута </strong>
         </td>
 
         <td>

@@ -113,7 +113,6 @@ export class PaymentComponent implements OnInit {
    let i: number;
    let s = 0;
    let sum: number;
-
    for ( i = 0; i < this.dataPays.length; i++) {
      if (this.dataPays[i].type === 'outcome') {
         sum = this.dataPays[i].money;
@@ -125,7 +124,6 @@ export class PaymentComponent implements OnInit {
     }
    s = s / 100;
    this.balance = s;
-   window.alert(s);
   }
 
 }
