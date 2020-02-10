@@ -28,7 +28,7 @@
         </td>
 
         <td>
-          <small> Коэф. стоимости</small>
+          <small> Тариф </small>
         </td>
         <td>
           <small> Статус</small>
@@ -109,6 +109,15 @@
       <div class="form-group" *ngIf="(role=='admin')&&(selected==3)">
         <input  class="form-control" name="y" placeholder="место"
                 [(ngModel)]="row" #rowInput="ngModel" />
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div class="form-group" *ngIf="(role=='admin')&&(selected==3)">
+        <input  class="form-control" name="t" placeholder="Тариф"  type="number" min="0" step="1.00"
+                [(ngModel)]="tarif" #rowInput="ngModel" />
       </div>
     </td>
   </tr>

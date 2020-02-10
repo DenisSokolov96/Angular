@@ -13,6 +13,7 @@ export class PaymentComponent implements OnInit {
   public selected = null;
   public role = localStorage.getItem('role');
   public summa = null;
+  public balance = null;
   mass = [];
 
   constructor(private restService: RestService) { }
@@ -62,6 +63,7 @@ export class PaymentComponent implements OnInit {
           this.dataPays = [];
           this.dataPays = res;
           console.log(res);
+          this.getBalance();
           return res;
         },
         error => {
@@ -97,12 +99,30 @@ export class PaymentComponent implements OnInit {
             this.getAllPay();
           } else {
             this.getMyPay();
+            this.getBalance();
           }
           return res;
         },
         error => {
           window.alert('Ошибка оплаты: \n' + error);
         });
+  }
+
+  getBalance() {
+
+   let i: number;
+   let s: number;
+
+   for ( i = 0; i < this.dataPays.length; i++) {
+      if (this.dataPays[i].type === 'outcome') {
+        s = s + parseInt(this.dataPays[i].type, 10);
+      } else {
+        s = s - parseInt(this.dataPays[i].type, 10);
+      }
+    }
+   s = s / 100;
+   this.balance = s;
+   console.log(s + ' = ' + this.balance);
   }
 
 }

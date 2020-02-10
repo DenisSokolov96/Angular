@@ -48,7 +48,7 @@
         </td>
 
         <td>
-          <small> Коэф. стоимости </small>
+          <small> Тариф </small>
         </td>
 
         <td>
@@ -181,7 +181,20 @@
                [(ngModel)]="summa" #colInput="ngModel" />
       </div>
     </td>
+
+    <td *ngIf="(role=='client')">
+      <small>{{balance}}</small>
+    </td>
+
+    <thead>
+    <tr>
+
+      <td>
+        <small>Выбрать {{balance}}</small>
+      </td>
+
+    </tr>
+    </thead>
+
   </tr>
-
-
 </table>

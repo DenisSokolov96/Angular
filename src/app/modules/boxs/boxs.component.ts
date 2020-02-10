@@ -18,6 +18,7 @@ export class BoxsComponent implements OnInit {
   public selected = null;
   public col = null;
   public row = null;
+  public tarif = null;
   // tslint:disable-next-line:variable-name
   public role = localStorage.getItem('role');
   mass = [];
@@ -85,7 +86,8 @@ export class BoxsComponent implements OnInit {
   getAdd(col2: number, row2: number) {
     const params = {
       col: col2,
-      row: row2
+      row: row2,
+      coefficient: this.tarif
     };
     this.restService.call('box/add', params, 'POST')
       .subscribe((res: any) => {
