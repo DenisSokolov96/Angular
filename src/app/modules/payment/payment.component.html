@@ -110,7 +110,7 @@
         </td>
 
         <td>
-          <strong> {{elem.date}} </strong>
+          <strong> {{elem.date.substring(0, elem.date.indexOf('[')) | date: 'M/d/yy HH:mm'}} </strong>
         </td>
 
         <td>
@@ -169,8 +169,12 @@
       </div>
     </td>
 
-    <td *ngIf="(role=='client')">
-      <small> Баланс: {{balance}}</small>
+    <td *ngIf="(selected == 3) && (role == 'admin')">
+      <small> Мой баланс: {{balance}}</small>
+    </td>
+
+    <td *ngIf="role == 'client'">
+      <small> Мой баланс: {{balance}}</small>
     </td>
 
   </tr>

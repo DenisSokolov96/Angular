@@ -85,11 +85,11 @@
 
 
         <td>
-          <strong> {{elem.dateTime}} </strong>
+          <strong> {{ elem.dateTime.substring(0, elem.dateTime.indexOf('[')) | date: 'M/d/yy HH:mm'}} </strong>
         </td>
 
         <td>
-          <strong *ngIf="(!elem.status)"> {{elem.end_dateTime}} </strong>
+          <strong *ngIf="(!elem.status)"> {{elem.end_dateTime.substring(0, elem.end_dateTime.indexOf('[')) | date: 'M/d/yy HH:mm'}} </strong>
           <strong *ngIf="(elem.status)"></strong>
         </td>
 
@@ -178,7 +178,7 @@
 
   <tr *ngIf="(selected==1)">
     <td>
-      <small>Выберите ID</small>
+      <small>Выберите парковочное место</small>
     </td>
   </tr>
 

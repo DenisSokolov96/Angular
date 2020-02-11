@@ -23,7 +23,8 @@ export class PaymentComponent implements OnInit {
       this.getAllPay();
       this.mass = [
         {id: '1', name: 'Показать полный список оплат' },
-        {id: '2', name: 'Пополнить' }
+        {id: '2', name: 'Пополнить' },
+        {id: '3', name: 'Показать список оплат' }
       ];
     } else {
       this.getMyPay();
@@ -43,6 +44,9 @@ export class PaymentComponent implements OnInit {
           break;
         case '2':
           this.payIncome();
+          break;
+        case '3':
+          this.getMyPay();
           break;
       }
     } else {
@@ -97,6 +101,7 @@ export class PaymentComponent implements OnInit {
       .subscribe((res: any) => {
           if (this.role === 'admin') {
             this.getAllPay();
+            this.getBalance();
           } else {
             this.getMyPay();
             this.getBalance();

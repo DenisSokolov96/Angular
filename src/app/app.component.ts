@@ -1,6 +1,9 @@
 import {Component, Injectable} from '@angular/core';
 import {HeaderService} from './services/header.service';
 import {Router} from '@angular/router';
+import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatSortModule, MatTableModule } from "@angular/material";
+
 
 @Component({
 
@@ -40,6 +43,7 @@ export class AppComponent {
 
   // TODO: check tis method
   // tslint:disable-next-line:use-lifecycle-interface
+  curUserLogin = localStorage.getItem('login');
   ngOnInit() {
     const login = localStorage.getItem('login');
     const role = localStorage.getItem('role');

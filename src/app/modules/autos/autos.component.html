@@ -32,11 +32,11 @@
           <small> Регистрационный номер </small>
         </td>
 
-        <td>
-          <small> Логин </small>
+        <td *ngIf="role=='admin'">
+          <small > Логин </small>
         </td>
 
-        <td>
+        <td *ngIf="role=='admin'">
           <small> Роль </small>
         </td>
 
@@ -57,11 +57,11 @@
           <strong> {{elem.reg_number}} </strong>
         </td>
 
-        <td>
+        <td *ngIf="role=='admin'">
           <strong> {{elem.account.login}} </strong>
         </td>
 
-        <td>
+        <td *ngIf="role=='admin'">
           <strong> {{elem.account.role.name}} </strong>
         </td>
 
