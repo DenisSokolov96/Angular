@@ -31,11 +31,11 @@
           <small> Логин </small>
         </td>
 
-        <td *ngIf="role=='admin'">
+        <td *ngIf="(role=='admin')&&(selected!=4)">
           <small> Роль </small>
         </td>
 
-        <td *ngIf="role=='admin'">
+        <td *ngIf="(role=='admin')&&(selected!=4)">
           <small> ID Сделки</small>
         </td>
 
@@ -43,11 +43,11 @@
           <small> ID Бокса</small>
         </td>
 
-        <td>
+        <td *ngIf="(selected != 3)&&(role=='client')">
           <small> Местоположение бокса </small>
         </td>
 
-        <td>
+        <td *ngIf="(selected != 3)&&(role=='client')">
           <small> Тариф </small>
         </td>
 
@@ -93,19 +93,19 @@
           <strong *ngIf="elem.account?.role.id==2"> Клиент  </strong>
         </td>
 
-        <td *ngIf="role=='admin'">
+        <td *ngIf="(role=='admin')&&(selected!=4)">
           <strong> {{elem.deal?.id}} </strong>
         </td>
 
-        <td *ngIf="role=='admin'">
+        <td *ngIf="(role=='admin')&&(selected!=4)">
           <strong> {{elem.deal?.box.id}} </strong>
         </td>
 
-        <td>
+        <td *ngIf="(selected != 3)&&(role=='client')">
           <strong> {{elem.deal?.box.col}} {{elem.deal?.box.row}} </strong>
         </td>
 
-        <td>
+        <td *ngIf="(selected != 3)&&(role=='client')">
           <strong> {{elem.deal?.box.coefficient}} </strong>
         </td>
 
@@ -170,11 +170,11 @@
     </td>
 
     <td *ngIf="(selected == 3) && (role == 'admin')">
-      <small> Мой баланс: {{balance}}</small>
+      <small> Мой баланс: {{balance}} руб.</small>
     </td>
 
     <td *ngIf="role == 'client'">
-      <small> Мой баланс: {{balance}}</small>
+      <small> Мой баланс: {{balance}} руб.</small>
     </td>
 
   </tr>

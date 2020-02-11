@@ -10,6 +10,8 @@ import {Payment} from '../../beans/Payment';
 export class PaymentComponent implements OnInit {
 
   public dataPays: Array<Payment> = new Array<Payment>();
+  public dataInOutcome: Array<Payment> = new Array<Payment>();
+  public old: Array<Payment> = new Array<Payment>();
   public selected = null;
   public role = localStorage.getItem('role');
   public summa = null;
@@ -24,19 +26,23 @@ export class PaymentComponent implements OnInit {
       this.mass = [
         {id: '1', name: 'Показать полный список оплат' },
         {id: '2', name: 'Пополнить' },
-        {id: '3', name: 'Показать список оплат' }
+        {id: '3', name: 'Показать список оплат' },
+        {id: '4', name: 'Показать список пополнений' },
+        {id: '5', name: 'Показать список списаний' }
       ];
     } else {
       this.getMyPay();
       this.mass = [
-        {id: '1', name: 'Показать список оплат' },
-        {id: '2', name: 'Пополнить' }
+        {id: '1', name: 'Показать список' },
+        {id: '2', name: 'Пополнить' },
+        {id: '3', name: 'Показать список пополнений' },
+        {id: '4', name: 'Показать список списаний' }
       ];
     }
   }
 
   selectData()  {
-
+    this.dataPays = this.old;
     if (this.role === 'admin') {
       switch (this.selected) {
         case '1':
@@ -48,6 +54,12 @@ export class PaymentComponent implements OnInit {
         case '3':
           this.getMyPay();
           break;
+        case '4':
+          this.myInCome()
+          break;
+        case '5':
+          this.myOutCome();
+          break;
       }
     } else {
       switch (this.selected) {
@@ -56,6 +68,12 @@ export class PaymentComponent implements OnInit {
           break;
         case '2':
           this.payIncome();
+          break;
+        case '3':
+          this.myInCome();
+          break;
+        case '4':
+          this.myOutCome();
           break;
       }
     }
@@ -66,6 +84,7 @@ export class PaymentComponent implements OnInit {
       .subscribe((res: any) => {
           this.dataPays = [];
           this.dataPays = res;
+          this.old = res;
           console.log(res);
           this.getBalance();
           return res;
@@ -80,6 +99,7 @@ export class PaymentComponent implements OnInit {
       .subscribe((res: any) => {
           this.dataPays = [];
           this.dataPays = res;
+          this.old = res;
           console.log(res);
           return res;
         },
@@ -130,5 +150,36 @@ export class PaymentComponent implements OnInit {
    s = s / 100;
    this.balance = s;
   }
+
+  myInCome() {
+    let i: number;
+    let s = 0;
+    this.dataInOutcome = [];
+    this.old = this.dataPays;
+    for ( i = 0; i < this.dataPays.length; i++) {
+      if (this.dataPays[i].type === 'income') {
+        this.dataInOutcome[s] = this.dataPays[i];
+        s = s + 1;
+      }
+    }
+    this.dataPays = [] ;
+    this.dataPays = this.dataInOutcome;
+  }
+
+  myOutCome() {
+    let i: number;
+    let s = 0;
+    this.dataInOutcome = [];
+    this.old = this.dataPays;
+    for ( i = 0; i < this.dataPays.length; i++) {
+      if (this.dataPays[i].type === 'outcome') {
+        this.dataInOutcome[s] = this.dataPays[i];
+        s = s + 1;
+      }
+    }
+    this.dataPays = [] ;
+    this.dataPays = this.dataInOutcome;
+  }
+
 
 }

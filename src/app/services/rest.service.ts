@@ -22,7 +22,7 @@ export class RestService {
    * @param params - параметры
    */
  public call(methodName: string, params: any, reqType: string) {
-    const url = 'http://localhost:8080/' + methodName;
+    const url = 'http://84.201.130.113:8080/' + methodName;
     console.log('calling ' + methodName + ' with params: ', params);
     const options = {
       headers: this.jsonHeaders,
